@@ -9,7 +9,9 @@ export const RcmHeaderWrapper = styled.div`
   border-bottom: 2px solid #c10d0c;
   background: ${(props) => {
     const url =
-      "url(" + require("@/assets/img/sprite_02.png").default + ") no-repeat center";
+      "url(" +
+      require("@/assets/img/sprite_02.png").default +
+      ") no-repeat center";
     return props.showIcon ? url : "";
   }};
   background-position: -225px -156px;
@@ -35,6 +37,9 @@ export const RcmHeaderLeft = styled.div`
     color: #ccc;
     line-height: 35px;
     .item {
+      a {
+        text-decoration: none;
+      }
       .line {
         margin: 0 10px;
       }

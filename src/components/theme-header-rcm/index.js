@@ -1,9 +1,9 @@
-import React, { memo } from "react";
-import propTypes from "prop-types";
-import { RcmHeaderLeft, RcmHeaderRight, RcmHeaderWrapper } from "./style";
+import React, { memo } from 'react'
+import propTypes from 'prop-types'
+import { RcmHeaderLeft, RcmHeaderRight, RcmHeaderWrapper } from './style'
 
 const ThemeHeaderRmc = function ThemeHeaderRmc(props) {
-  const { title, keywords, showIcon, right, keywordsClick } = props;
+  const { title, keywords, showIcon, right, keywordsClick } = props
   return (
     <RcmHeaderWrapper showIcon={showIcon}>
       <RcmHeaderLeft>
@@ -13,30 +13,23 @@ const ThemeHeaderRmc = function ThemeHeaderRmc(props) {
           </a>
         </h2>
         <ul className="keywords">
-          {keywords.map((item, index) => {
+          {keywords.map(item => {
             return (
-              <li className="item" key={index}>
-                <div
-                  onClick={(e) => {
-                    e.preventDefault();
-                    keywordsClick(item);
-                  }}
-                >
-                  {item}
-                </div>
+              <li className="item" key={item}>
+                <a href="/" onClick={(e) => {e.preventDefault();keywordsClick(item)}}>{item}</a>
                 <span className="line">|</span>
               </li>
-            );
+            )
           })}
         </ul>
       </RcmHeaderLeft>
       <RcmHeaderRight>
         <span>{right}</span>
-        {showIcon && <i className="icon"></i>}
+        {showIcon &&<i className="icon"></i>}
       </RcmHeaderRight>
     </RcmHeaderWrapper>
-  );
-};
+  )
+}
 
 ThemeHeaderRmc.propTypes = {
   // title属性必填
@@ -45,12 +38,12 @@ ThemeHeaderRmc.propTypes = {
   showIcon: propTypes.bool,
   right: propTypes.any,
   keywordsClick: propTypes.func,
-};
+}
 
-ThemeHeaderRmc.defaultProps = {
+ThemeHeaderRmc.defaultProps  = {
   keywords: [],
   showIcon: true,
-  right: "更多",
-};
+  right: '更多'
+}
 
-export default memo(ThemeHeaderRmc);
+export default memo(ThemeHeaderRmc)

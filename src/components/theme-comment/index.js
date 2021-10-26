@@ -15,7 +15,6 @@ export default memo(function CommentCard(props) {
   const { info } = props;
   const time = formatMonthDay(info.time, "MM月dd日");
   const picUrl = info && info.user.avatarUrl;
-
   const dispatch = useDispatch();
 
   const { isLogin, cookie } = useSelector(
@@ -31,25 +30,22 @@ export default memo(function CommentCard(props) {
   let likedCount = info && info.likedCount;
 
   const sendCommentLink = () => {
-    console.log(liked);
-    console.log(likedCount);
     if (!isLogin) {
       // 没登陆
       dispatch(changeIsVisible(true));
     }
     if (!flag) {
-      liked = true;
+      liked = !liked;
       likedCount += 1;
       sendLikeComment(getRoute(), id, 1, 2, cookie).then((res) => {
-        console.log(res);
         if (res.code === 200) message.success("点赞成功");
       });
     } else {
-      liked = false;
+      liked = !liked;
       likedCount -= 1;
       setFlag(true);
       sendLikeComment(getRoute(), id, 0, 2, cookie).then((res) => {
-        if (res.code === 200) message.success("点赞成功");
+        if (res.code === 200) message.success("已取消点赞");
       });
     }
     setFlag(!flag);

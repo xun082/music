@@ -71,11 +71,7 @@ function SongItem(props) {
         </div>
       </div>
       <div className="song-item duration">{duration}</div>
-      <NavLink
-        to="/discover/song"
-        className="song-item singer"
-        onClick={(e) => playMusic(e, true)}
-      >
+      <NavLink to="/discover/song" className="song-item singer">
         {singer}
       </NavLink>
     </SongItemWrapper>
