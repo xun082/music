@@ -75,6 +75,7 @@ function RanKingMain() {
     [dispatch]
   );
 
+  // 评论
   const handleClick = useCallback(() => {
     const inputs = document.getElementById("my-input").value;
     sendComment(2, listId, inputs, cookie).then((res) => {
