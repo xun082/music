@@ -15,3 +15,19 @@ export function sendComment(type, id, content, cookie) {
     },
   });
 }
+
+// 点赞
+/* cid : 评论 id
+t : 是否点赞 ,1 为点赞 ,0 为取消点赞 */
+export function sendLikeComment(id, cid, t, type, cookie) {
+  return request({
+    url: "/comment/like",
+    params: {
+      id,
+      cid,
+      t,
+      type,
+      cookie,
+    },
+  });
+}

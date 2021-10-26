@@ -15,7 +15,7 @@ import {
   getRankingCommentTotalAction,
 } from "../../store/actionCreators";
 import SongItem from "../song-item";
-import { formatMinuteSecond } from "@/utils/format-utils.js";
+import { formatMinuteSecond, getRoute } from "@/utils/format-utils.js";
 import { sendComment } from "@/services/comment";
 
 function RanKingMain() {
@@ -23,7 +23,6 @@ function RanKingMain() {
 
   const {
     playCount,
-    currentRanKingListId,
     currentRanKingList,
     hotCommentList,
     newCommentList,
@@ -37,7 +36,6 @@ function RanKingMain() {
         "currentRanKingListTitleInfo",
         "playCount",
       ]),
-      currentRanKingListId: state.getIn(["ranking", "currentRanKingListId"]),
       currentRanKingList: state.getIn(["ranking", "currentRanKingList"]),
       hotCommentList: state.getIn(["ranking", "hotCommentList"]),
       newCommentList: state.getIn(["ranking", "newCommentList"]),
@@ -48,17 +46,13 @@ function RanKingMain() {
     shallowEqual
   );
 
-  // 歌单的id
-  const route = window.location.hash;
-  const searchId = route.substr(route.lastIndexOf("=") + 1);
-  const listId = searchId || currentRanKingListId;
   const targePageCount = (currentPage - 1) * 20;
   // other hooks
   useEffect(() => {
-    dispatch(getRanKingListItemAction(listId));
-    dispatch(getRanKingHotCommentAction(listId, 2));
-    dispatch(getRanKingNewCommentAction(listId, 20, targePageCount));
-  }, [dispatch, listId, targePageCount]);
+    dispatch(getRanKingListItemAction(getRoute()));
+    dispatch(getRanKingHotCommentAction(getRoute(), 2));
+    dispatch(getRanKingNewCommentAction(getRoute(), 20, targePageCount));
+  }, [dispatch, targePageCount]);
 
   // other handle
   const rightSlot = (
@@ -78,13 +72,13 @@ function RanKingMain() {
   // 评论
   const handleClick = useCallback(() => {
     const inputs = document.getElementById("my-input").value;
-    sendComment(2, listId, inputs, cookie).then((res) => {
+    sendComment(2, getRoute(), inputs, cookie).then((res) => {
       if (res.code === 200) {
         message.success("评论成功");
-        dispatch(getRanKingNewCommentAction(listId, 20, targePageCount));
+        dispatch(getRanKingNewCommentAction(getRoute(), 20, targePageCount));
       }
     });
-  }, [dispatch, listId, targePageCount, cookie]);
+  }, [dispatch, targePageCount, cookie]);
 
   return (
     <RanKingMainWrapper>
@@ -123,7 +117,9 @@ function RanKingMain() {
           <ThemeHeaderRcm title="精彩评论" showIcon={false} right={false} />
           {hotCommentList &&
             hotCommentList.map((item, index) => {
-              return <CommentCard key={index} info={item} />;
+              return (
+                <CommentCard key={index} info={item} actions={(item, index)} />
+              );
             })}
           <ThemeHeaderRcm title="最新评论" showIcon={false} right={false} />
           {newCommentList &&

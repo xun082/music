@@ -129,6 +129,14 @@ export function getQueryObject(url) {
   return obj;
 }
 
+// // 歌单的id
+export function getRoute() {
+  const route = window.location.hash;
+  const searchId = route.substr(route.lastIndexOf("=") + 1);
+  const listId = searchId;
+  return listId;
+}
+
 /**
  * 格式化时间
  * @param str
