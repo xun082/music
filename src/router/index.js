@@ -10,7 +10,7 @@ import HYRanking from "@/pages/discover/c-pages/ranking";
 import HYAlbum from "@/pages/discover/c-pages/album";
 import HYArtist from "@/pages/discover/c-pages/artist";
 import HYSongs from "@/pages/discover/c-pages/songs";
-import HYDjradio from "@/pages/discover/c-pages/djradio";
+import HYAnchor from "@/pages/discover/c-pages/anchor";
 import HYPlayer from "@/pages/player";
 import Profile from "@/pages/profile";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
@@ -47,7 +47,7 @@ const routes = [
       {
         path: "/discover/djradio",
         exact: true,
-        component: HYDjradio,
+        component: HYAnchor,
       },
       {
         path: "/discover/artist",

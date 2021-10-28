@@ -3766,3 +3766,126 @@ export const address = {
   659000: "新疆维吾尔族自治区直辖县级行政单位",
   659001: "新疆维吾尔族自治区石河子市",
 };
+
+export const anchor = [
+  {
+    tag: "情感",
+    Image:
+      "https://p1.music.126.net/icULXvfqWJMFvcjTrXSLeA==/109951165406422565.jpg",
+    id: 3,
+  },
+  {
+    tag: "音乐推荐",
+    Image:
+      "https://p4.music.126.net/fWonYYR8sORR2mEKZfYqjQ==/109951165406418703.jpg",
+    id: 2,
+  },
+  {
+    tag: "有声书",
+    Image:
+      "https://p4.music.126.net/Tg1Ids_gRSqaZXyZ3zj0Sg==/109951166109395795.jpg",
+    id: 10001,
+  },
+  {
+    tag: "脱口秀",
+    Image:
+      "http://p3.music.126.net/LIkzDiW_ktaSbk_s6MgMkg==/109951165406441809.jpg",
+    id: 8,
+  },
+  {
+    tag: "创作返唱",
+    Image:
+      "http://p3.music.126.net/GqeTI3A_g4FFzm_4MoNSsQ==/109951165406411412.jpg",
+    id: 2001,
+  },
+  {
+    tag: "电音",
+    Image:
+      "http://p2.music.126.net/3qyLawhgmTyHNabhuaKYTg==/109951165406422635.jpg",
+    id: 10002,
+  },
+  {
+    tag: "知识",
+    Image:
+      "http://p2.music.126.net/wOmtE80i2EMG2dR7DnTJUw==/109951166108735875.jpg",
+    id: 11,
+  },
+  {
+    tag: "二次元",
+    Image:
+      "http://p2.music.126.net/bOFLdKG966TolZNpA1VYtw==/109951166108595279.jpg",
+    id: 3001,
+  },
+  {
+    tag: "明星专区",
+    Image:
+      "http://p2.music.126.net/hxNgvipzXFp570FgkiFGcQ==/109951166108605164.jpg",
+    id: 14,
+  },
+  {
+    tag: "生活",
+    Image:
+      "http://p2.music.126.net/X3gH1OSeg5xQV5bqSv-cEg==/109951166108614572.jpg",
+    id: 6,
+  },
+  {
+    tag: "亲子",
+    Image:
+      "http://p2.music.126.net/krSruAC4wwq3TXJkcSHvUQ==/109951166108617045.jpg",
+    id: 13,
+  },
+  {
+    tag: "新闻资讯",
+    Image:
+      "http://p2.music.126.net/OS8NVOBjZoznnOc5YSBy3w==/109951166108651181.jpg",
+    id: 3807096,
+  },
+  {
+    tag: "广播剧",
+    Image:
+      "http://p2.music.126.net/la9HvnMewT3lp72DL-NgKA==/109951166108675738.jpg",
+    id: 3088097,
+  },
+  {
+    tag: "故事",
+    Image:
+      "http://p2.music.126.net/4pgJFKZYNU1tZxQdp6xa-A==/109951166111062508.jpg",
+    id: 3080097,
+  },
+  {
+    tag: "人文历史",
+    Image:
+      "http://p2.music.126.net/HXCbeAs1YDXgOOwE9oY2ew==/109951166111050278.jpg",
+    id: 3080098,
+  },
+  {
+    tag: "娱乐",
+    Image:
+      "http://p2.music.126.net/gFOkDDYZa8m93ccvIlmmvg==/109951166108686306.jpg",
+    id: 3083097,
+  },
+  {
+    tag: "相声曲艺",
+    Image:
+      "http://p2.music.126.net/BwIOmsgRTVLL1vrVieJD9w==/109951166108695116.jpg",
+    id: 3088098,
+  },
+  {
+    tag: "其他",
+    Image:
+      "http://p2.music.126.net/W1j-Lb5ozohzud342aPIpw==/109951166108699096.jpg",
+    id: 3081098,
+  },
+  {
+    tag: "常见问题",
+    Image:
+      "http://p1.music.126.net/icULXvfqWJMFvcjTrXSLeA==/109951165406422565.jpg",
+    id: 20000,
+  },
+  {
+    tag: "我要当主播",
+    Image:
+      "http://p1.music.126.net/icULXvfqWJMFvcjTrXSLeA==/109951165406422565.jpg",
+    id: 100000,
+  },
+];

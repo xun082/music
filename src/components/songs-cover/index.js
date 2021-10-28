@@ -7,8 +7,8 @@ import { SongsCoverWrapper } from "./style";
 export default memo(function HYSongsCover(props) {
   const { info } = props;
 
-  const create =
-    info.copywriter || (info && info.creator && info.creator.nickname);
+  const creator = info && info.creator && info.creator.nickname;
+  const create = info.copywriter || creator;
 
   return (
     <SongsCoverWrapper>
