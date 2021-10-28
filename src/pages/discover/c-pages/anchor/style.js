@@ -5,7 +5,11 @@ export const AnchorWrapper = styled.div`
   padding: 40px;
   .content {
     width: 100%;
-    height: 100px;
-    background-color: red;
+    height: auto;
+    .recommend {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
   }
 `;

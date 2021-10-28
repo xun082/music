@@ -124,11 +124,10 @@ export const getRanKingHotCommentAction = (id, type) => {
 export const getRanKingNewCommentAction = (id, limit = 20, offset) => {
   return (dispatch) => {
     getTopListNewComment(id, limit, offset).then((res) => {
-      console.log(res);
       const comment = res && res.comments;
       const total = res && res.total;
       dispatch(changeRankingNewComment(comment));
-      dispatch(changeRankingTotal(total)); 
+      dispatch(changeRankingTotal(total));
     });
   };
 };
@@ -136,7 +135,6 @@ export const getRanKingNewCommentAction = (id, limit = 20, offset) => {
 // 分页
 export const getRankingCommentTotalAction = (currentPage) => {
   return (dispatch) => {
-    console.log(currentPage);
     dispatch(changeRankingCurrentPage(currentPage));
   };
 };

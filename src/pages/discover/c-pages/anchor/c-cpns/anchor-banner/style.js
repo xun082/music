@@ -8,8 +8,8 @@ export const AnchorBannerWrapper = styled.div`
     width: 100%;
     height: 100%;
     .control {
-      position: fixed;
-      top: 220px;
+      position: relative;
+      top: 80px;
       z-index: 999;
       display: flex;
       .btn {
@@ -20,11 +20,11 @@ export const AnchorBannerWrapper = styled.div`
         cursor: pointer;
       }
       .left {
-        left: -10px;
+        left: -20px;
         background-position: -4px -35px;
       }
       .right {
-        left: 895px;
+        left: 905px;
         background-position: -34px -35px;
       }
     }
