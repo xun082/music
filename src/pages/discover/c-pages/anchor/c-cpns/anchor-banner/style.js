@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const AnchorBannerWrapper = styled.div`
   width: 100%;
   height: 200px;
+  margin-bottom: 20px;
   .banner {
     width: 100%;
     height: 100%;
