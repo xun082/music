@@ -11,5 +11,15 @@ export const AnchorWrapper = styled.div`
       justify-content: space-between;
       width: 100%;
     }
+    .radio-station {
+      margin-top: 20px;
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+    }
   }
 `;

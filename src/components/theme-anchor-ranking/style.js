@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
-export const AnchorRecommendWrapper = styled.div`
+export const AnchorRankingWrapper = styled.div`
   width: 425px;
   height: 60px;
-  padding: 10px 20px;
+  padding: 10px 0;
   display: flex;
   align-items: center;
   &:hover {
     background: #eee;
+  }
+  .rank {
+    width: 40px;
+    height: 40px;
   }
   .image {
     position: relative;
@@ -31,10 +35,9 @@ export const AnchorRecommendWrapper = styled.div`
   }
   .content {
     box-sizing: border-box;
-    margin-left: 5px;
+    margin: 0 5px 0 5px;
     height: 40px;
-    width: 285px;
-    margin-right: 5px;
+    width: 210px;
     .text {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -48,10 +51,10 @@ export const AnchorRecommendWrapper = styled.div`
     }
   }
   .tag {
+    position: relative;
     border: 1px solid #999;
     color: #999;
-    text-align: center;
-    width: 50px;
-    height: 20px;
+    width: 120px;
+    height: 10px;
   }
 `;

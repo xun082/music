@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const PlayBarWrapper = styled.div`
+  z-index: 99999;
   position: fixed;
   left: 0;
   right: 0;

@@ -17,3 +17,13 @@ export function getRankingAnchor(limit, offset) {
     },
   });
 }
+
+// 节目排行榜
+export function getAnchorCategory(type) {
+  return request({
+    url: "/dj/recommend/type",
+    params: {
+      type,
+    },
+  });
+}

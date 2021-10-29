@@ -16,6 +16,7 @@ export default memo(function ThemeAnchorCard(props) {
     <AnchorRecommendWrapper>
       <div className="image">
         <img src={getSizeImage(picUrl, 40)} alt="" />
+        <div className="hover sprite_icon"></div>
       </div>
       <div className="content">
         <div className="text">{desc}</div>
