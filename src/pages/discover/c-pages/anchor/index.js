@@ -7,6 +7,8 @@ import AnchorBanner from "./c-cpns/anchor-banner";
 import AnchorLeft from "./c-cpns/anchor-left";
 import AnchorRight from "./c-cpns/anchor-right";
 import AnchorRadio from "./c-cpns/anchor-radio";
+import CategoryAnchor from "./c-cpns/anchor-category";
+import { getRoute } from "@/utils/format-utils.js";
 
 export default memo(function HYAnchor() {
   const {
@@ -27,6 +29,8 @@ export default memo(function HYAnchor() {
   );
   const dispatch = useDispatch();
 
+  const isNumber = parseInt(getRoute());
+
   useEffect(() => {
     dispatch(getAnchorCategoryAction(2));
     dispatch(getAnchorCategoryAction(3));
@@ -39,17 +43,27 @@ export default memo(function HYAnchor() {
     <AnchorWrapper className="wrap-v2">
       <AnchorBanner />
       <div className="content">
-        <div className="recommend">
-          <AnchorLeft />
-          <AnchorRight />
-        </div>
-        <div className="radio-station">
-          <AnchorRadio title={"音乐推荐"} info={anchorMusic} />
-          <AnchorRadio title={"生活"} info={anchorLife} />
-          <AnchorRadio title={"情感"} info={anchorKnowledge} />
-          <AnchorRadio title={"创作翻唱"} info={anchorCreate} />
-          <AnchorRadio title={"知识"} info={anchorEmotion} />
-        </div>
+        {!isNaN(isNumber) ? (
+          <div>
+            <div className="banner-category">
+              <CategoryAnchor />
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div className="recommend">
+              <AnchorLeft />
+              <AnchorRight />
+            </div>
+            <div className="radio-station">
+              <AnchorRadio title={"音乐推荐"} info={anchorMusic} />
+              <AnchorRadio title={"生活"} info={anchorLife} />
+              <AnchorRadio title={"情感"} info={anchorKnowledge} />
+              <AnchorRadio title={"创作翻唱"} info={anchorCreate} />
+              <AnchorRadio title={"知识"} info={anchorEmotion} />
+            </div>
+          </div>
+        )}
       </div>
     </AnchorWrapper>
   );

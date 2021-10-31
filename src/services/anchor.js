@@ -27,3 +27,11 @@ export function getAnchorCategory(type) {
     },
   });
 }
+
+// 轮播图分类排行榜
+export function getBannerCategory(limit, offset, cateId) {
+  return request({
+    url: "/dj/radio/hot",
+    params: { limit, offset, cateId },
+  });
+}

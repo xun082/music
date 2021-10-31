@@ -1,20 +1,43 @@
-import React, { memo, useState, useRef } from "react";
+import React, { memo, useState, useRef, useCallback } from "react";
+
+import { useDispatch, shallowEqual, useSelector } from "react-redux";
 
 import { Carousel } from "antd";
 import { AnchorBannerWrapper } from "./style";
 import { anchor } from "@/common/local-data";
+import {
+  getExcellentAnchorAction,
+  getBannerCategoryAction,
+} from "../../store/actionCreators";
+import { getRoute } from "@/utils/format-utils.js";
+
+import { NavLink } from "react-router-dom";
 
 export default memo(function AnchorBanner() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const { currentPage } = useSelector(
+    (state) => ({
+      currentPage: state.getIn(["anchor", "currentPage"]),
+    }),
+    shallowEqual
+  );
+
+  const dispatch = useDispatch();
+  const targePageCount = (currentPage - 1) * 20;
   // 轮播图点击
   const bannerRef = useRef();
 
-  const handleClick = (id) => {
-    if (id !== currentIndex) {
-      setCurrentIndex(id);
-    }
-  };
+  const handleClick = useCallback(
+    (id) => {
+      if (id !== currentIndex) {
+        setCurrentIndex(id);
+      }
+      dispatch(getExcellentAnchorAction(getRoute()));
+      dispatch(getBannerCategoryAction(22, targePageCount, getRoute()));
+    },
+    [currentIndex, dispatch, targePageCount]
+  );
   return (
     <AnchorBannerWrapper>
       <div className="banner">
@@ -44,12 +67,16 @@ export default memo(function AnchorBanner() {
                       }}
                       key={index}
                     >
-                      <div
-                        className="image"
-                        style={{
-                          backgroundImage: "url(" + item.Image + ")",
-                        }}
-                      ></div>
+                      <NavLink to={`/discover/djradio?id=${item.id}`}>
+                        <div
+                          className={
+                            "image " + (item.id === currentIndex ? "img" : "")
+                          }
+                          style={{
+                            backgroundImage: "url(" + item.Image + ")",
+                          }}
+                        ></div>
+                      </NavLink>
                       <div className="name">{item.tag}</div>
                     </div>
                   );

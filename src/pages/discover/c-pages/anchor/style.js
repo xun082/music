@@ -6,6 +6,9 @@ export const AnchorWrapper = styled.div`
   .content {
     width: 100%;
     height: auto;
+    .banner-category {
+      margin-bottom: 40px;
+    }
     .recommend {
       display: flex;
       justify-content: space-between;

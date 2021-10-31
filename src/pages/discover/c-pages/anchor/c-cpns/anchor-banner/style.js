@@ -38,12 +38,14 @@ export const AnchorBannerWrapper = styled.div`
       justify-content: flex-start;
       flex-wrap: wrap;
       .active {
-        background-position: -70px 0;
+        background-position: -70px 0 !important;
         div {
           color: #d35757 !important;
         }
       }
       .tag {
+        display: block;
+        text-decoration: none;
         border: none;
         background-position: 0 0;
         cursor: pointer;
@@ -63,6 +65,9 @@ export const AnchorBannerWrapper = styled.div`
           height: 48px;
           margin: 0 0 2px 11px;
           background-position: 0 0;
+        }
+        .img {
+          background-position: -48px 0 !important;
         }
         .name {
           width: 100%;

@@ -129,7 +129,7 @@ export function getQueryObject(url) {
   return obj;
 }
 
-// // 歌单的id
+// // 路由的id
 export function getRoute() {
   const route = window.location.hash;
   const searchId = route.substr(route.lastIndexOf("=") + 1);
