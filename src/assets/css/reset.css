@@ -120,6 +120,10 @@ body, textarea, select, input, button {
   background: url(../img/playbar_sprite.png) no-repeat 0 9999px;
 }
 
+.singer{
+  background: url(../img/singer.png) no-repeat 0 9999px;
+}
+
 .lyric-class .ant-message-notice-content {
   position: fixed;
   left: 50%;

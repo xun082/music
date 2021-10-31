@@ -15,14 +15,14 @@ export const headerLinks = [
     title: "商城",
     link: "https://music.163.com/store/product",
   },
-  // {
-  //   title: '音乐人',
-  //   link: 'https://music.163.com/nmusician/web/index#/',
-  // },
-  // {
-  //   title: '下载客户端',
-  //   link: 'https://music.163.com/#/download',
-  // },
+  {
+    title: "音乐人",
+    link: "https://music.163.com/nmusician/web/index#/",
+  },
+  {
+    title: "下载客户端",
+    link: "https://music.163.com/#/download",
+  },
 ];
 
 export const footerLinks = [
@@ -137,39 +137,42 @@ export const hotRadios = [
 
 // 歌手分类
 export const singerCategories = [
-  {
-    title: "推荐",
-    area: -1,
-    artists: [
-      {
-        name: "推荐歌手",
-        type: 1,
-        url: "/discover/artist",
-        id: 0,
-      },
-      {
-        name: "入驻歌手",
-        type: 2,
-        url: "/discover/artist?cat=5001",
-        dataPath: "/artist/list?cat=5001",
-      },
-    ],
-  },
+  // {
+  //   title: "推荐",
+  //   area: -1,
+  //   artists: [
+  //     {
+  //       name: "推荐歌手",
+  //       type: 1,
+  //       url: "#/discover/artist",
+  //       id: 0,
+  //     },
+  //     {
+  //       name: "入驻歌手",
+  //       type: 2,
+  //       url: "/discover/artist?cat=5001",
+  //       dataPath: "/artist/list?cat=5001",
+  //     },
+  //   ],
+  // },
   {
     title: "华语",
     area: 7,
     artists: [
       {
+        id: 0,
         name: "华语男歌手",
-        url: "/discover/artist?id=1001",
+        url: "id=1001",
         type: 1,
       },
       {
+        id: 1,
         name: "华语女歌手",
         url: "/discover/artist?id=1002",
         type: 2,
       },
       {
+        id: 2,
         name: "华语组合/乐队",
         url: "/discover/artist?id=1003",
         type: 3,
@@ -181,6 +184,7 @@ export const singerCategories = [
     area: 96,
     artists: [
       {
+        id: 3,
         name: "欧美男歌手",
         url: "/discover/artist?id=2001",
         type: 1,
@@ -190,11 +194,7 @@ export const singerCategories = [
         url: "/discover/artist?id=2002",
         type: 2,
       },
-      {
-        name: "欧美组合乐队",
-        url: "/discover/artist?id=2003",
-        type: 3,
-      },
+      { id: 4, name: "欧美组合乐队", url: "/discover/artist?id=2003", type: 3 },
     ],
   },
   {
@@ -202,16 +202,19 @@ export const singerCategories = [
     area: 8,
     artists: [
       {
+        id: 5,
         name: "日本男歌手",
         url: "/discover/artist?id=6001",
         type: 1,
       },
       {
+        id: 6,
         name: "日本女歌手",
         url: "/discover/artist?id=6002",
         type: 2,
       },
       {
+        id: 7,
         name: "日本组合/乐队",
         url: "/discover/artist?id=6003",
         type: 3,
@@ -223,16 +226,19 @@ export const singerCategories = [
     area: 16,
     artists: [
       {
+        id: 8,
         name: "韩国男歌手",
         url: "/discover/artist?id=7001",
         type: 1,
       },
       {
+        id: 9,
         name: "韩国女歌手",
         url: "/discover/artist?id=7002",
         type: 2,
       },
       {
+        id: 10,
         name: "韩国组合/乐队",
         url: "/discover/artist?id=7003",
         type: 3,
@@ -244,16 +250,19 @@ export const singerCategories = [
     area: 0,
     artists: [
       {
+        id: 11,
         name: "其他男歌手",
         url: "/discover/artist?id=4001",
         type: 1,
       },
       {
+        id: 12,
         name: "其他女歌手",
         url: "/discover/artist?id=4002",
         type: 2,
       },
       {
+        id: 13,
         name: "其他组合乐队",
         url: "/discover/artist?id=4003",
         type: 3,

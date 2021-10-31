@@ -1,9 +1,18 @@
-import React, { memo } from 'react'
+import React, { memo } from "react";
+
+import { ArtistWrapper, ArtistWrapperLeft, ArtistWrapperRight } from "./style";
+import HYArtistCategory from "./c-cpns/artist-category";
+import HYArtistList from "./c-cpns/artist-list";
 
 export default memo(function HYArtist() {
-    return (
-        <div>
-            
-        </div>
-    )
-})
+  return (
+    <ArtistWrapper className="wrap-v2">
+      <ArtistWrapperLeft>
+        <HYArtistCategory />
+      </ArtistWrapperLeft>
+      <ArtistWrapperRight>
+        <HYArtistList />
+      </ArtistWrapperRight>
+    </ArtistWrapper>
+  );
+});
