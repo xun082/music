@@ -7,6 +7,8 @@ import {
   getTopLists,
   getSettleSinger,
   getHotAnchor,
+  getPersonRecommend,
+  getDayRecommend,
 } from "@/services/recommend";
 
 // 轮播图
@@ -53,6 +55,16 @@ const changeNewRankingAction = (res) => ({
 const changeOriginRankingAction = (res) => ({
   type: actionTypes.CHANGE_ORIGIN_RANKING,
   originRanking: res.playlist,
+});
+
+const changePersonRecommendAction = (res) => ({
+  type: actionTypes.CHANGE_PERSON_LIST,
+  res,
+});
+
+const changeDayRecommendAction = (res) => ({
+  type: actionTypes.CHANGE_DAY_RECOMMEND,
+  res,
 });
 
 export const getTopBannerAction = () => {
@@ -113,6 +125,26 @@ export const getTopListAction = (id) => {
           break;
         default:
       }
+    });
+  };
+};
+
+export const getPersonRecommendAction = (cookie) => {
+  return (dispatch) => {
+    getPersonRecommend(cookie).then((res) => {
+      const item = res && res.recommend;
+      dispatch(changePersonRecommendAction(item));
+    });
+  };
+};
+
+// 获取每日推荐
+export const getDayRecommendAction = (cookie) => {
+  return (dispatch) => {
+    getDayRecommend(cookie).then((res) => {
+      console.log(res.data);
+      const item = res && res.data && res.data.dailySongs;
+      dispatch(changeDayRecommendAction(item));
     });
   };
 };

@@ -8,3 +8,5 @@ export const CHANGE_ORIGIN_RANKING = "recommend/CHANGE_ORIGIN_RANKING";
 export const CHANGE_SETTLE_SINGER = "recommend/CHANGE_SETTLE_SINGER";
 
 export const CHANGE_HOT_ANCHOR = "recommend/CHANGE_HOT_ANCHOR";
+export const CHANGE_PERSON_LIST = "recommend/CHANGE_PERSON_LIST";
+export const CHANGE_DAY_RECOMMEND = "recommend/CHANGE_DAY_RECOMMEND";

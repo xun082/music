@@ -106,6 +106,10 @@ body, textarea, select, input, button {
   background: url(../img/sprite_table.png) no-repeat 0 9999px;
 }
 
+.recmd_day {
+  background: url(../img/recmd_daily.jpg) no-repeat 0 9999px;
+}
+
 .image_cover {
   position: absolute;
   left: 0;

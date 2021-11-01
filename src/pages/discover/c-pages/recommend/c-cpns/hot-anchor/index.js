@@ -20,6 +20,7 @@ export default memo(function HYHotAnchor() {
   useEffect(() => {
     dispatch(getHotAnchorAction(5));
   }, [dispatch]);
+
   return (
     <HotAnchor>
       <HYThemeRightRcm title="热门主播"></HYThemeRightRcm>

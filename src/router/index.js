@@ -6,6 +6,7 @@ import HYFriend from "@/pages/friend";
 import HYMine from "@/pages/mine";
 
 import HYRecommend from "@/pages/discover/c-pages/recommend";
+import HYDayRecommend from "../pages/discover/c-pages/recommend/c-cpns/day-recommend";
 import HYRanking from "@/pages/discover/c-pages/ranking";
 import HYAlbum from "@/pages/discover/c-pages/album";
 import HYArtist from "@/pages/discover/c-pages/artist";
@@ -34,7 +35,12 @@ const routes = [
       },
       {
         path: "/discover/recommend",
+        exact: true,
         component: HYRecommend,
+      },
+      {
+        path: "/discover/recommend/taste",
+        component: HYDayRecommend,
       },
       {
         path: "/discover/ranking",

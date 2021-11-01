@@ -8,10 +8,11 @@ const defaultState = Map({
   newAlbums: [],
   settleSinger: [],
   hotAnchors: [],
-
   upRanking: {},
   newRanking: {},
   originRanking: {},
+  personList: [],
+  dayRecommend: [],
 });
 
 function reducer(state = defaultState, action) {
@@ -22,7 +23,6 @@ function reducer(state = defaultState, action) {
       return state.set("hotRecommends", action.hotRecommends);
     case actionTypes.CHANGE_NEW_ALBUM:
       return state.set("newAlbums", action.newAlbums);
-
     case actionTypes.CHANGE_UP_RANKING:
       return state.set("upRanking", action.upRanking);
     case actionTypes.CHANGE_NEW_RANKING:
@@ -33,9 +33,12 @@ function reducer(state = defaultState, action) {
       return state.set("settleSinger", action.settleSinger);
     case actionTypes.CHANGE_HOT_ANCHOR:
       return state.set("hotAnchors", action.hotAnchors);
+    case actionTypes.CHANGE_PERSON_LIST:
+      return state.set("personList", action.res);
+    case actionTypes.CHANGE_DAY_RECOMMEND:
+      return state.set("dayRecommend", action.res);
     default:
       return state;
   }
 }
-
 export default reducer;

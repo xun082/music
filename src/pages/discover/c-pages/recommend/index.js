@@ -14,7 +14,7 @@ import HYRecommendRanking from "./c-cpns/recommend-ranking";
 import HYUserLogin from "./c-cpns/user-login";
 import HYSettleSinger from "./c-cpns/setter-singer";
 import HYHotAnchor from "./c-cpns/hot-anchor";
-
+import HYPersonalized from "./c-cpns/personalized";
 function HYRecommend(props) {
   return (
     <RecommendWrapper>
@@ -23,6 +23,7 @@ function HYRecommend(props) {
         <RecommendLeft>
           <HYHotRecommend />
           <HYNewAlbum />
+          <HYPersonalized />
           <HYRecommendRanking />
         </RecommendLeft>
         <RecommendRight>

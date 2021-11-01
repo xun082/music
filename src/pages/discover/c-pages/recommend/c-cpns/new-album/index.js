@@ -45,6 +45,8 @@ export default memo(function HYNewAlbum() {
                         size={100}
                         width={118}
                         bgp="-570px"
+                        play={23}
+                        play_bgp="0 -110px"
                       />
                     );
                   })}

@@ -14,11 +14,16 @@ export function getHotRecommends(limit) {
   });
 }
 
-export function getNewAlbums(limit) {
+export function getNewAlbums(offset, limit, area, type, year, month) {
   return request({
     url: "/top/album",
     params: {
+      offset,
       limit,
+      area,
+      type,
+      year,
+      month,
     },
   });
 }
@@ -48,6 +53,27 @@ export function getHotAnchor(limit) {
     url: "/dj/toplist",
     params: {
       limit,
+    },
+  });
+}
+
+// 每日推荐
+export function getDayRecommend(cookie) {
+  return request({
+    url: "/recommend/songs",
+    params: {
+      cookie,
+    },
+  });
+}
+
+// 个性化推荐
+export function getPersonRecommend(cookie) {
+  return request({
+    url: "/recommend/resource",
+    method: "get",
+    params: {
+      cookie: cookie,
     },
   });
 }
