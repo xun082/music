@@ -141,3 +141,11 @@ body, textarea, select, input, button {
   color: #fff;
 }
 
+.my_music {
+  background: url(../img/mymusic.png) no-repeat 0 9999px;
+}
+
+.not-login {
+  background: url(../img/notlogin.jpg) no-repeat 0 9999px;
+}
+

@@ -28,13 +28,13 @@ export const getCategory = () => {
   };
 };
 
-export const getSongList = (page) => {
+export const getSongList = (page, limit) => {
   return (dispatch, getState) => {
     // 1.获取currentCategory
     const name = getState().getIn(["songList", "currentCategory"]);
 
     // 2.获取数据
-    getSongCategoryList(name, page * PER_PAGE_NUMBER).then((res) => {
+    getSongCategoryList(name, page * PER_PAGE_NUMBER, limit).then((res) => {
       dispatch(changeSongListAction(res));
     });
   };

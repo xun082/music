@@ -16,10 +16,9 @@ export default memo(function HYDayMain() {
     }),
     shallowEqual
   );
-  const dispatch = useDispatch();
-
   const length = dayRecommend && dayRecommend.length;
-
+  const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getDayRecommendAction(cookie));
   }, [dispatch, cookie]);

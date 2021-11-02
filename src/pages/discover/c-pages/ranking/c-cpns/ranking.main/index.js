@@ -15,7 +15,7 @@ import {
   getRankingCommentTotalAction,
 } from "../../store/actionCreators";
 import SongItem from "../song-item";
-import { formatMinuteSecond, getRoute } from "@/utils/format-utils.js";
+import { formatMinuteSecond, getQueryObject } from "@/utils/format-utils.js";
 import { sendComment } from "@/services/comment";
 
 function RanKingMain() {
@@ -47,12 +47,13 @@ function RanKingMain() {
   );
 
   const targePageCount = (currentPage - 1) * 20;
+  const { id } = getQueryObject();
   // other hooks
   useEffect(() => {
-    dispatch(getRanKingListItemAction(getRoute()));
-    dispatch(getRanKingHotCommentAction(getRoute(), 2));
-    dispatch(getRanKingNewCommentAction(getRoute(), 20, targePageCount));
-  }, [dispatch, targePageCount]);
+    dispatch(getRanKingListItemAction(id));
+    dispatch(getRanKingHotCommentAction(id, 2));
+    dispatch(getRanKingNewCommentAction(id, 20, targePageCount));
+  }, [dispatch, id, targePageCount]);
 
   // other handle
   const rightSlot = (
@@ -71,13 +72,13 @@ function RanKingMain() {
   // 评论
   const handleClick = useCallback(() => {
     const inputs = document.getElementById("my-input").value;
-    sendComment(2, getRoute(), inputs, cookie).then((res) => {
+    sendComment(2, id, inputs, cookie).then((res) => {
       if (res.code === 200) {
         message.success("评论成功");
-        dispatch(getRanKingNewCommentAction(getRoute(), 20, targePageCount));
+        dispatch(getRanKingNewCommentAction(id, 20, targePageCount));
       }
     });
-  }, [dispatch, targePageCount, cookie]);
+  }, [dispatch, targePageCount, cookie, id]);
 
   return (
     <RanKingMainWrapper>

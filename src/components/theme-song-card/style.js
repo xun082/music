@@ -77,6 +77,9 @@ export const SongCardWrapper = styled.div`
     }
   }
   .album {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 127px;
   }
   &:hover {

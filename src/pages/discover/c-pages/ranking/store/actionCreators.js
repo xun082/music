@@ -115,16 +115,18 @@ export const getRanKingHotCommentAction = (id, type) => {
   return (dispatch) => {
     getTopListComment(id, type).then((res) => {
       const data = res && res.data && res.data.comments;
+      console.log(data);
       dispatch(changeRankingHotComment(data));
     });
   };
 };
 
-//获取歌单热门评论
+//获取歌单新评论
 export const getRanKingNewCommentAction = (id, limit = 20, offset) => {
   return (dispatch) => {
     getTopListNewComment(id, limit, offset).then((res) => {
       const comment = res && res.comments;
+      console.log(comment);
       const total = res && res.total;
       dispatch(changeRankingNewComment(comment));
       dispatch(changeRankingTotal(total));

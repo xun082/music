@@ -140,8 +140,8 @@ export const getPersonRecommendAction = (cookie) => {
 
 // 获取每日推荐
 export const getDayRecommendAction = (cookie) => {
-  return (dispatch) => {
-    getDayRecommend(cookie).then((res) => {
+  return async (dispatch) => {
+    await getDayRecommend(cookie).then((res) => {
       console.log(res.data);
       const item = res && res.data && res.data.dailySongs;
       dispatch(changeDayRecommendAction(item));

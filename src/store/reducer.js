@@ -8,6 +8,7 @@ import { reducer as songsReducer } from "../pages/discover/c-pages/songs/store";
 import { reducer as anchorReducer } from "../pages/discover/c-pages/anchor/store";
 import { reducer as artistReducer } from "../pages/discover/c-pages/artist/store";
 import { reducer as albumReducer } from "../pages/discover/c-pages/album/store";
+import { reducer as playlistReducer } from "../pages/playList/store";
 const cReducer = combineReducers({
   recommend: recommendReducer,
   player: playerReducer,
@@ -17,6 +18,7 @@ const cReducer = combineReducers({
   anchor: anchorReducer,
   artist: artistReducer,
   album: albumReducer,
+  playlist: playlistReducer,
 });
 
 export default cReducer;

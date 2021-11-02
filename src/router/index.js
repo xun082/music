@@ -14,6 +14,7 @@ import HYSongs from "@/pages/discover/c-pages/songs";
 import HYAnchor from "@/pages/discover/c-pages/anchor";
 import HYPlayer from "@/pages/player";
 import Profile from "@/pages/profile";
+import HYPlayList from "@/pages/playList";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
@@ -66,6 +67,10 @@ const routes = [
       {
         path: "/discover/player",
         component: HYPlayer,
+      },
+      {
+        path: "/discover/playlist",
+        component: HYPlayList,
       },
     ],
   },
