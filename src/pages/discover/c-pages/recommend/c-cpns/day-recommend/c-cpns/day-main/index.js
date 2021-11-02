@@ -18,6 +18,8 @@ export default memo(function HYDayMain() {
   );
   const dispatch = useDispatch();
 
+  const length = dayRecommend && dayRecommend.length;
+
   useEffect(() => {
     dispatch(getDayRecommendAction(cookie));
   }, [dispatch, cookie]);
@@ -28,13 +30,13 @@ export default memo(function HYDayMain() {
         <HYThemeHeaderRCM
           showIcon={false}
           title="热门推荐"
-          keywords={["华语"]}
+          keywords={[`${length}首歌`]}
           right={false}
         />
         <ThemeSongHeader />
         {dayRecommend &&
           dayRecommend.map((item, index) => {
-            return <ThemeSongCard key={index} info={item} index={index} />;
+            return <ThemeSongCard key={index} info={item} index={index + 1} />;
           })}
       </div>
     </DayMainWrapper>

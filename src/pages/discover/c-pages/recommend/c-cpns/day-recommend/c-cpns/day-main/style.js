@@ -6,4 +6,7 @@ export const DayMainWrapper = styled.div`
   .content {
     width: 100%;
   }
+  .line {
+    display: none;
+  }
 `;

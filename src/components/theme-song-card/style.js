@@ -66,16 +66,6 @@ export const SongCardWrapper = styled.div`
         background-position: -104px -172px;
       }
     }
-    &:hover {
-      .control {
-        opacity: 1;
-        z-index: 11;
-      }
-      .time {
-        opacity: 0;
-        /* display: none; */
-      }
-    }
   }
   .name {
     white-space: nowrap;
@@ -88,5 +78,14 @@ export const SongCardWrapper = styled.div`
   }
   .album {
     width: 127px;
+  }
+  &:hover {
+    .control {
+      opacity: 1;
+      z-index: 11;
+    }
+    .time {
+      opacity: 0;
+    }
   }
 `;

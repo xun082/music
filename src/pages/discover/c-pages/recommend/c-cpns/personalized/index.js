@@ -9,10 +9,11 @@ import HYSongsCover from "@/components/songs-cover";
 import ThemeSchedule from "@/components/theme-day-recommend";
 
 export default memo(function HYPersonalized() {
-  const { cookie, personList } = useSelector(
+  const { cookie, personList, isLogin } = useSelector(
     (state) => ({
       cookie: state.getIn(["loginState", "cookie"]),
       personList: state.getIn(["recommend", "personList"]),
+      isLogin: state.getIn(["loginState", "isLogin"]),
     }),
     shallowEqual
   );
@@ -21,7 +22,7 @@ export default memo(function HYPersonalized() {
     dispatch(getPersonRecommendAction(cookie));
   }, [dispatch, cookie]);
 
-  return (
+  return isLogin ? (
     <PersonalizedWrapper>
       <HYThemeHeaderRCM title="个性化推荐" />
       <div className="content">
@@ -43,5 +44,7 @@ export default memo(function HYPersonalized() {
           })}
       </div>
     </PersonalizedWrapper>
+  ) : (
+    ""
   );
 });
