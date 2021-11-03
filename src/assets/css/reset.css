@@ -14,7 +14,7 @@ ul, ol, li {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none!important;
   color: #666;
 }
 
@@ -66,6 +66,23 @@ body, textarea, select, input, button {
   margin: 0 auto;
 }
 
+.wrap-v3 {  
+  border: 1px solid #d3d3d3;
+  border-right: none;
+  padding: 40px 30px;
+  box-sizing: border-box;
+  width: 710px;
+  margin: 0 auto;
+}
+
+.wrap-v4 {
+  border: 1px solid #d3d3d3;
+  padding: 40px 30px 40px 20px;
+  box-sizing: border-box;
+  width: 270px;
+  margin: 0 auto;
+}
+
 .sprite_01 {
   background: url(../img/sprite_01.png) no-repeat 0 9999px;
 }
@@ -76,6 +93,10 @@ body, textarea, select, input, button {
 
 .anchor_icon{
   background: url(../img/radio_bg.png) no-repeat 0 9999px;
+}
+
+.ban_mask{
+  background: url(../img/ban_mask.png) no-repeat 0 9999px;
 }
 
 .sprite_02 {

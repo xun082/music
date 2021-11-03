@@ -91,6 +91,31 @@ export const discoverMenu = [
   },
 ];
 
+// 歌手中的数据
+export const artistMenu = [
+  {
+    title: "热门作品",
+    id: 0,
+    link: "/discover/artist/detail",
+  },
+  {
+    title: "所有专辑",
+    id: 1,
+    link: "/discover/artist/detail/album",
+  },
+
+  {
+    title: "相关mv",
+    id: 2,
+    link: "/discover/artist/detail/mv",
+  },
+  {
+    title: "艺人介绍",
+    id: 3,
+    link: "/discover/artist/detail/desc",
+  },
+];
+
 // 热门主播
 export const hotRadios = [
   {

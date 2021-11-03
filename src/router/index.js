@@ -15,6 +15,11 @@ import HYAnchor from "@/pages/discover/c-pages/anchor";
 import HYPlayer from "@/pages/player";
 import Profile from "@/pages/profile";
 import HYPlayList from "@/pages/playList";
+import HYArtistDetail from "../pages/artist";
+import HYArtistSong from "../pages/artist/c-cpns/song";
+import HYArtistMv from "../pages/artist/c-cpns/mv";
+import HYArtistAlbum from "../pages/artist/c-cpns/album";
+import HYArtistDesc from "../pages/artist/c-cpns/desc";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
@@ -58,7 +63,35 @@ const routes = [
       },
       {
         path: "/discover/artist",
+        exact: true,
         component: HYArtist,
+      },
+      {
+        path: "/discover/artist/detail",
+        component: HYArtistDetail,
+        routes: [
+          {
+            // render: () => <Redirect to="/discover/artist/detail" />,
+            path: "/discover/artist/detail",
+            exact: true,
+            component: HYArtistSong,
+          },
+          {
+            path: "/discover/artist/detail/album",
+            exact: true,
+            component: HYArtistAlbum,
+          },
+          {
+            path: "/discover/artist/detail/mv",
+            exact: true,
+            component: HYArtistMv,
+          },
+          {
+            path: "/discover/artist/detail/desc",
+            exact: true,
+            component: HYArtistDesc,
+          },
+        ],
       },
       {
         path: "/discover/album",

@@ -7,6 +7,7 @@ import { reducer as loginReducer } from "@/components/theme-login/store";
 import { reducer as songsReducer } from "../pages/discover/c-pages/songs/store";
 import { reducer as anchorReducer } from "../pages/discover/c-pages/anchor/store";
 import { reducer as artistReducer } from "../pages/discover/c-pages/artist/store";
+import { reducer as artistDetailReducer } from "../pages/artist/store";
 import { reducer as albumReducer } from "../pages/discover/c-pages/album/store";
 import { reducer as playlistReducer } from "../pages/playList/store";
 const cReducer = combineReducers({
@@ -19,6 +20,7 @@ const cReducer = combineReducers({
   artist: artistReducer,
   album: albumReducer,
   playlist: playlistReducer,
+  artistDetail: artistDetailReducer,
 });
 
 export default cReducer;

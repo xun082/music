@@ -22,7 +22,7 @@ export const getArtistCategoryAction = (limit, offset, type, area, initial) => {
   };
 };
 
-// 获取歌手列表
+// 获取头部信息
 export const getArtistHeaderAction = (name) => {
   return (dispatch) => {
     dispatch(changeArtistHeaderAction(name));

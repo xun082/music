@@ -18,6 +18,7 @@ export default memo(function HYPlayRight() {
   useEffect(() => {
     dispatch(getSongList(0, 8));
   }, [dispatch]);
+
   return (
     <PlayRightWrapper>
       <div className="header">喜欢这个歌单的人</div>
@@ -40,8 +41,8 @@ export default memo(function HYPlayRight() {
               <div className="img">
                 <img src={getSizeImage(item.coverImgUrl, 50)} alt="" />
               </div>
-
               <a
+                target="view_window"
                 rel="noopener noreferrer"
                 href={`#/discover/playlist?id=${item.id}`}
                 className="info"

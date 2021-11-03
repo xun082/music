@@ -15,8 +15,8 @@ export function getCount(count) {
   }
 }
 
-export function getSizeImage(imgUrl, size) {
-  return `${imgUrl}?param=${size}x${size}`;
+export function getSizeImage(imgUrl, size, colum = "x") {
+  return `${imgUrl}?param=${size}${colum}${size}`;
 }
 
 export function formatDate(time, fmt) {
