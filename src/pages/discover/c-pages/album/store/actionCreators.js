@@ -20,11 +20,10 @@ const changeAlbumTotal = (res) => ({
   res,
 });
 
-// 获取歌手列表
+// 获取碟列表
 export const getHotAlbumAction = (offset, limit, area, type, year, month) => {
   return (dispatch) => {
     getNewAlbums(offset, limit, area, type, year, month).then((res) => {
-      console.log(res);
       const item = res && res.monthData;
       const total = item && item.length;
       dispatch(changeHotAlbumAction(item));

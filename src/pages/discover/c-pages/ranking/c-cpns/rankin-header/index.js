@@ -9,11 +9,12 @@ import ThemeHeaderControl from "@/components/theme-header-control";
 export default memo(function RankingHeader() {
   const { titleInfo } = useSelector(
     (state) => ({
-      titleInfo: state.getIn(["ranking", "currentRanKingListTitleInfo"]),
+      titleInfo: state.getIn(["ranking", "rankingTitleInfo"]),
     }),
     shallowEqual
   );
 
+  console.log(titleInfo);
   // other handle
   const picUrl = titleInfo && titleInfo.coverImgUrl;
   const name = titleInfo && titleInfo.name;
@@ -21,6 +22,7 @@ export default memo(function RankingHeader() {
   const comment = titleInfo && titleInfo.commentCount;
   const share = titleInfo && titleInfo.shareCount;
   const collect = titleInfo && titleInfo.subscribedCount;
+
   return (
     <HeaderWrapper>
       <div className="title-image">

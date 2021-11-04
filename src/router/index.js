@@ -15,11 +15,12 @@ import HYAnchor from "@/pages/discover/c-pages/anchor";
 import HYPlayer from "@/pages/player";
 import Profile from "@/pages/profile";
 import HYPlayList from "@/pages/playList";
-import HYArtistDetail from "../pages/artist";
-import HYArtistSong from "../pages/artist/c-cpns/song";
-import HYArtistMv from "../pages/artist/c-cpns/mv";
-import HYArtistAlbum from "../pages/artist/c-cpns/album";
-import HYArtistDesc from "../pages/artist/c-cpns/desc";
+import HYArtistDetail from "../pages/artist-detail";
+import HYArtistSong from "../pages/artist-detail/c-cpns/song";
+import HYArtistMv from "../pages/artist-detail/c-cpns/mv";
+import HYArtistAlbum from "../pages/artist-detail/c-cpns/album";
+import HYArtistDesc from "../pages/artist-detail/c-cpns/desc";
+import HYAlbumDetail from "../pages/album-detail";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
@@ -95,7 +96,12 @@ const routes = [
       },
       {
         path: "/discover/album",
+        exact: true,
         component: HYAlbum,
+      },
+      {
+        path: "/discover/album/detail",
+        component: HYAlbumDetail,
       },
       {
         path: "/discover/player",

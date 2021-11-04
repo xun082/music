@@ -15,7 +15,6 @@ export default memo(function HYArtistCategory() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   let { type, area } = getQueryObject();
-  console.log(type, area);
   const dispatch = useDispatch();
   useEffect(() => {
     //   默认获取的信息

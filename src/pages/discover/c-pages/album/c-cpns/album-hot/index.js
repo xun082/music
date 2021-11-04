@@ -9,7 +9,7 @@ import {
   getAlbumTotalAction,
 } from "../../store/actionCreators";
 import HYAlbumCover from "@/components/album-cover";
-import HYPagination from "@/components/pagination/index";
+import HYPagination from "@/components/pagination";
 
 export default memo(function HYHotAlbum() {
   // redux hooks

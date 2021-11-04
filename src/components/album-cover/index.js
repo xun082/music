@@ -5,7 +5,6 @@ import { getSizeImage } from "@/utils/format-utils";
 import { AlbumWrapper } from "./style";
 
 export default memo(function HYAlbumCover(props) {
-  // state and props
   const {
     info,
     size = 130,
@@ -25,7 +24,11 @@ export default memo(function HYAlbumCover(props) {
     >
       <div className="album-image">
         <img src={getSizeImage(info.picUrl, size)} alt="" />
-        <a href="/todo" className="cover image_cover">
+        <a
+          rel="noopener noreferrer"
+          href={`#/discover/album/detail?id=${info.id}`}
+          className="cover image_cover"
+        >
           {info.name}
         </a>
         <div className="play sprite_icon"></div>

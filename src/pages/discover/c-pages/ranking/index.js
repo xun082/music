@@ -4,7 +4,7 @@ import qs from "query-string";
 
 import {
   getRankingListAction,
-  getRanKingListTitleInfoAction,
+  getRanKingTitleInfoAction,
 } from "./store/actionCreators";
 import {
   RankingWrapper,
@@ -33,7 +33,7 @@ export default memo(function HYRanking(props) {
     // 把对象转成查询字符串或者把查询字符串转成对象用
     let { id } = qs.parse(props.location.search);
     id = id ? id : currentRanKingListId;
-    dispatch(getRanKingListTitleInfoAction(id));
+    dispatch(getRanKingTitleInfoAction(id));
   }, [dispatch, currentRanKingListId, props]);
 
   return (

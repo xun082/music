@@ -34,12 +34,34 @@ export function getArtistSong(id) {
   });
 }
 
-// 歌手热门50首
+// 歌手mv
 export function getArtistMovie(id) {
   return request({
     url: "/artist/mv",
     params: {
       id,
+    },
+  });
+}
+
+// 歌手描述
+export function getArtistDesc(id) {
+  return request({
+    url: "/artist/desc",
+    params: {
+      id,
+    },
+  });
+}
+
+// 歌手描述
+export function getArtistAlbum(id, limit, offset) {
+  return request({
+    url: "/artist/album",
+    params: {
+      id,
+      limit,
+      offset,
     },
   });
 }

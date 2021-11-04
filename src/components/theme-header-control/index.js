@@ -15,7 +15,8 @@ export default memo(function ThemeHeaderControl(props) {
         </div>
         <div className="sprite_button favorite">
           <i className="sprite_button inner">
-            <em className="sprite_button favorite-icon"></em> ({collect} )
+            <em className="sprite_button favorite-icon"></em>
+            {collect}收藏
           </i>
         </div>
         <div className="sprite_button share">

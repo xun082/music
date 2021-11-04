@@ -6,7 +6,8 @@ const defaultState = Map({
   ranKingList: [],
   currentIndex: 0,
   currentRanKingListId: 19723756,
-  currentRanKingListTitleInfo: {},
+  // currentRanKingListTitleInfo: {},
+  rankingTitleInfo: {},
   currentRanKingList: [],
   hotCommentList: [],
   newCommentList: [],
@@ -22,8 +23,8 @@ function reducer(state = defaultState, action) {
       return state.set("currentIndex", action.index);
     case actionTypes.CHANGE_CURRENT_RANKING_LIST_ID:
       return state.set("currentRanKingListId", action.id);
-    case actionTypes.CHANGE_CURRENT__RANKING_LIST_TITLE_INFO:
-      return state.set("currentRanKingListTitleInfo", action.titleInfo);
+    case actionTypes.CHANGE_RANKING_TITLE:
+      return state.set("rankingTitleInfo", action.res);
     case actionTypes.CHANGE_CURRENT_RANKING_LIST:
       return state.set("currentRanKingList", action.list);
     case actionTypes.CHANGE_HOT_COMMENT:

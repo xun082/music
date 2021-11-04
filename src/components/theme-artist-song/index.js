@@ -9,7 +9,13 @@ export default memo(function ThemeSongCard(props) {
   const name = info.name;
   const time = info && info.dt;
   const album = info && info.al && info.al.name;
-  //   console.log(info);
+  // 待完成
+  // const singer =
+  //   info &&
+  //   info.ar &&
+  //   info.ar.map((item) => {
+  //     return item.name;
+  //   });
   return (
     <SongCardWrapper>
       <div className="play">

@@ -26,9 +26,9 @@ export const changeCurrentRanKingListIdAction = (id) => ({
 });
 
 // 改变榜单标题详情Action
-const changeRankingListTitleInfo = (titleInfo) => ({
-  type: actionTypes.CHANGE_CURRENT__RANKING_LIST_TITLE_INFO,
-  titleInfo,
+const changeRankingTitleInfo = (res) => ({
+  type: actionTypes.CHANGE_RANKING_TITLE,
+  res,
 });
 
 // 改变不同榜单列表Action;
@@ -62,7 +62,7 @@ const changeRankingTotal = (list) => ({
 });
 
 // 榜单标题信息 network
-export const getRanKingListTitleInfoAction = (id = 19723756) => {
+export const getRanKingTitleInfoAction = (id = 19723756) => {
   return (dispatch) => {
     getTopListDetail(id).then((res) => {
       console.log(res);
@@ -76,7 +76,7 @@ export const getRanKingListTitleInfoAction = (id = 19723756) => {
         commentCount,
         shareCount,
       } = res && res.playlist;
-      const ranKingListTitleInfo = {
+      const ranKingTitleInfo = {
         coverImgUrl,
         name,
         trackNumberUpdateTime,
@@ -85,7 +85,7 @@ export const getRanKingListTitleInfoAction = (id = 19723756) => {
         commentCount,
         shareCount,
       };
-      dispatch(changeRankingListTitleInfo(ranKingListTitleInfo));
+      dispatch(changeRankingTitleInfo(ranKingTitleInfo));
     });
   };
 };
