@@ -60,7 +60,7 @@ export const ProgramHeaderWrapper = styled.div`
             line-height: 20px;
             top: 50%;
             color: #fff;
-            font-size: 14px;
+            font-size: 12px;
             transform: translateY(-50%);
             left: 30%;
           }

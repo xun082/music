@@ -4,6 +4,7 @@ import {
   getAnchorDetail,
   getDjProgram,
   getProgramDetail,
+  getProgramComment,
 } from "@/services/anchor";
 
 const changeAnchorInfoAction = (res) => ({
@@ -22,11 +23,34 @@ const changeProgramDetailAction = (res) => ({
   res,
 });
 
+// 节目新评论
+const changeProgramNewCommentAction = (res) => ({
+  type: actionTypes.CHANGE_NEW_COMMENT,
+  res,
+});
+
+// 节目热门评论;
+const changeProgramHotComment = (res) => ({
+  type: actionTypes.CHANGE_HOT_COMMENT,
+  res,
+});
+
+// 分页初始页
+const changeProgramCurrentPage = (res) => ({
+  type: actionTypes.CHANGE_CURRENT_PAGE,
+  res,
+});
+
+// 评论total
+const changeProgramTotal = (res) => ({
+  type: actionTypes.CHANGE_PAGE_TOTAL,
+  res,
+});
+
 // 获取电台信息
 export const getProgramDetailAction = (id) => {
   return (dispatch) => {
     getProgramDetail(id).then((res) => {
-      console.log(res.program);
       const {
         categoryName,
         description,
@@ -88,5 +112,26 @@ export const getAnchorProgramAction = (rid) => {
     getDjProgram(rid).then((res) => {
       dispatch(changeAnchorProgramAction(res));
     });
+  };
+};
+
+// 获取节目评论
+export const getProgramCommentAction = (id, limit, offset) => {
+  return (dispatch) => {
+    getProgramComment(id, limit, offset).then((res) => {
+      const comments = res && res.comments;
+      const total = res && res.total;
+      const hotComments = res && res.hotComments;
+      dispatch(changeProgramTotal(total));
+      dispatch(changeProgramNewCommentAction(comments));
+      dispatch(changeProgramHotComment(hotComments));
+    });
+  };
+};
+
+// 分页
+export const getProgramCommentTotalAction = (currentPage) => {
+  return (dispatch) => {
+    dispatch(changeProgramCurrentPage(currentPage));
   };
 };

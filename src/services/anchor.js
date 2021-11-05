@@ -65,3 +65,15 @@ export function getProgramDetail(id) {
     },
   });
 }
+
+// 电台节目详情
+export function getProgramComment(id, limit, offset) {
+  return request({
+    url: "/comment/dj",
+    params: {
+      id,
+      limit,
+      offset,
+    },
+  });
+}

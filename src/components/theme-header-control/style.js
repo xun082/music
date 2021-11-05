@@ -5,6 +5,25 @@ export const HeaderControlWrapper = styled.div`
     margin-bottom: 25px;
     margin-right: -10px;
     display: flex;
+    .anchor-play {
+      position: relative;
+      color: #fff;
+      width: 130px;
+      height: 31px;
+      padding: 0 5px 0 0;
+      margin-right: 5px;
+      border-radius: 5px;
+      line-height: 31px;
+      background-position: 0 -633px;
+      cursor: pointer;
+      .time {
+        position: absolute;
+        width: 100px;
+        height: 31px;
+        line-height: 31px;
+        left: 30%;
+      }
+    }
     .play {
       position: relative;
       color: #fff;
@@ -36,7 +55,27 @@ export const HeaderControlWrapper = styled.div`
         background-position: 0 -1588px;
       }
     }
-
+    .liked {
+      margin-right: 5px;
+      background-position: 0 -2368px;
+      display: flex;
+      width: 65px;
+      height: 31px;
+      align-items: center;
+      border-radius: 5px;
+      .icon {
+        margin-left: 5px;
+        width: 20px;
+        height: 20px;
+        background-position: 2px -92px;
+      }
+      .num {
+        height: 31px;
+        width: 40px;
+        text-align: center;
+        line-height: 31px;
+      }
+    }
     .inner {
       display: flex;
       width: 100%;

@@ -21,6 +21,7 @@ export const CommentWrapper = styled.div`
     }
     .content {
       color: #333;
+      white-space: pre-wrap;
     }
     .control {
       display: flex;

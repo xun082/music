@@ -7,7 +7,10 @@ import {
   formatMonthDay,
 } from "@/utils/format-utils";
 import { ProgramHeaderWrapper } from "./style";
-import { getProgramDetailAction } from "../../store/actionCreators";
+import {
+  getProgramDetailAction,
+  getProgramCommentAction,
+} from "../../store/actionCreators";
 import ThemeHeaderControl from "@/components/theme-header-control";
 
 export default memo(function HYProgramHeader() {
@@ -26,15 +29,18 @@ export default memo(function HYProgramHeader() {
   const description = programInfo && programInfo.description;
   const shareCount = programInfo && programInfo.shareCount;
   const commentCount = programInfo && programInfo.commentCount;
+  const duration = programInfo && programInfo.duration;
+  const likedCount = programInfo && programInfo.likedCount;
 
   const programInfos = programInfo && programInfo.radio;
   const nickname = programInfos && programInfo.radio.name;
-  const subCount = programInfos && programInfos.subCount;
+  const subCount = programInfos && programInfo.radio.subCount;
   const programCount = programInfos && programInfos.programCount;
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProgramDetailAction(pid));
+    dispatch(getProgramCommentAction(pid, 20, 1));
   }, [dispatch, pid]);
   return (
     <ProgramHeaderWrapper>
@@ -51,7 +57,7 @@ export default memo(function HYProgramHeader() {
             <div className="common music sprite_icon3"></div>
             <div className="common name">{nickname}</div>
             <div className="common sub sprite_button">
-              <div className="text">订阅 ({subCount}) </div>
+              <div className="text">订阅 {subCount} </div>
             </div>
           </div>
           <div className="category">
@@ -68,7 +74,12 @@ export default memo(function HYProgramHeader() {
         </div>
       </div>
       <div className="control">
-        <ThemeHeaderControl share={shareCount} comment={commentCount} />
+        <ThemeHeaderControl
+          share={shareCount}
+          comment={commentCount}
+          duration={duration}
+          likedCount={likedCount}
+        />
       </div>
       <div className="desc">简介:{description}</div>
     </ProgramHeaderWrapper>

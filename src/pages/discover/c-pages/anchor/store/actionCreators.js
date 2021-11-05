@@ -126,7 +126,6 @@ export const getExcellentAnchorAction = (limit, type) => {
 export const getBannerCategoryAction = (limit, offset, cateId) => {
   return (dispatch) => {
     getBannerCategory(limit, offset, cateId).then((res) => {
-      console.log(res);
       const total = res && res.count;
       const item = res && res.djRadios;
       dispatch(changeAnchorCategoryRanking(item));

@@ -10,11 +10,14 @@ import {
   getBannerCategoryAction,
 } from "../../store/actionCreators";
 import { getRoute } from "@/utils/format-utils.js";
-
+import { getQueryObject } from "@/utils/format-utils";
 import { NavLink } from "react-router-dom";
 
 export default memo(function AnchorBanner() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  let { id } = getQueryObject();
+  // 把字符转换为数字，一顿操作猛如虎
+  const ids = parseInt(id);
+  const [currentIndex, setCurrentIndex] = useState(ids);
 
   const { currentPage } = useSelector(
     (state) => ({

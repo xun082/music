@@ -56,8 +56,8 @@ export function formatMonthDay(time) {
   return formatDate(time, "20YY-MM-dd");
 }
 
-export function formatMinuteSecond(time) {
-  return formatDate(time, "mm:ss");
+export function formatMinuteSecond(time, minute = "", second = "") {
+  return formatDate(time, `mm${minute}:ss${second}`);
 }
 
 export function getPlayUrl(id) {

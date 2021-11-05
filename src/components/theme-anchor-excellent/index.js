@@ -6,7 +6,6 @@ import { getSizeImage } from "@/utils/format-utils";
 export default memo(function ThemeAnchorExcellent(props) {
   const { info } = props;
 
-  console.log(info.id);
   const id = info && info.id;
   const name = info && info.name;
   const intervenePicUrl = info && info.intervenePicUrl;
