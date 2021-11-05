@@ -1,0 +1,4 @@
+export const CHANGE_ANCHOR_DETAIL = "anchorDetail/CHANGE_ANCHOR_DETAIL";
+export const CHANGE_ANCHOR_PROGRAM = "anchorDetail/CHANGE_ANCHOR_PROGRAM";
+
+export const CHANGE_PROGRAM_DETAIL = "anchorDetail/CHANGE_PROGRAM_DETAIL";

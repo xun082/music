@@ -7,6 +7,26 @@ export function getRecommendAnchor() {
   });
 }
 
+// 电台详情
+export function getAnchorDetail(rid) {
+  return request({
+    url: "/dj/detail",
+    params: {
+      rid,
+    },
+  });
+}
+
+// 电台详情里的节目
+export function getDjProgram(rid) {
+  return request({
+    url: "/dj/program",
+    params: {
+      rid,
+    },
+  });
+}
+
 // 节目排行榜
 export function getRankingAnchor(limit, offset) {
   return request({
@@ -33,5 +53,15 @@ export function getBannerCategory(limit, offset, cateId) {
   return request({
     url: "/dj/radio/hot",
     params: { limit, offset, cateId },
+  });
+}
+
+// 电台节目详情
+export function getProgramDetail(id) {
+  return request({
+    url: "/dj/program/detail",
+    params: {
+      id,
+    },
   });
 }

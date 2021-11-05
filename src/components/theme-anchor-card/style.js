@@ -12,6 +12,7 @@ export const RadioCardWrapper = styled.div`
     margin-right: 10px;
   }
   .content {
+    cursor: pointer;
     width: 305px;
     height: 120px;
     .radio {

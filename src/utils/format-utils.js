@@ -53,7 +53,7 @@ function padLeftZero(str) {
 }
 
 export function formatMonthDay(time) {
-  return formatDate(time, "20YY年MM月dd日");
+  return formatDate(time, "20YY-MM-dd");
 }
 
 export function formatMinuteSecond(time) {

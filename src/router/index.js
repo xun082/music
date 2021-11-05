@@ -21,6 +21,7 @@ import HYArtistMv from "../pages/artist-detail/c-cpns/mv";
 import HYArtistAlbum from "../pages/artist-detail/c-cpns/album";
 import HYArtistDesc from "../pages/artist-detail/c-cpns/desc";
 import HYAlbumDetail from "../pages/album-detail";
+import HYAnchorDetail from "../pages/anchor-detail";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
@@ -61,6 +62,11 @@ const routes = [
         path: "/discover/djradio",
         exact: true,
         component: HYAnchor,
+      },
+      {
+        path: "/discover/anchor",
+        exact: true,
+        component: HYAnchorDetail,
       },
       {
         path: "/discover/artist",

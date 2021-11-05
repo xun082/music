@@ -20,23 +20,25 @@ export default memo(function ThemeAnchorCard(props) {
       <div className="image">
         <img src={getSizeImage(intervenePicUrl, 120)} alt="" />
       </div>
-      <div className="content">
-        <div className="radio">{name}</div>
-        {!isNaN(isNumber) ? (
-          <div className="info">
-            <div className="user">
-              <div className="image sprite_icon2"></div>
-              <div className="name">{nickname}</div>
+      <a rel="noopener noreferrer" href={`#/discover/anchor?id=${info.id}`}>
+        <div className="content">
+          <div className="radio">{name}</div>
+          {!isNaN(isNumber) ? (
+            <div className="info">
+              <div className="user">
+                <div className="image sprite_icon2"></div>
+                <div className="name">{nickname}</div>
+              </div>
+              <div className="anchor-info">
+                <span className="collect">共{programCount}期</span>
+                <span className="count">订阅{subCount}次</span>
+              </div>
             </div>
-            <div className="anchor-info">
-              <span className="collect">共{programCount}期</span>
-              <span className="count">订阅{subCount}次</span>
-            </div>
-          </div>
-        ) : (
-          <div className="name">{text}</div>
-        )}
-      </div>
+          ) : (
+            <div className="name">{text}</div>
+          )}
+        </div>
+      </a>
     </RadioCardWrapper>
   );
 });
