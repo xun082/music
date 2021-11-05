@@ -1,18 +1,14 @@
 import styled from "styled-components";
 
 export const PlayerWrapper = styled.div`
-  .content {
-    background: url(${require("@/assets/img/wrap-bg.png")}) repeat-y;
-    background-color: #fff;
-    display: flex;
+  display: flex;
+  .left {
+    width: 710px;
+    padding: 40px;
+  }
+  .right {
+    width: 270px;
+    padding: 40px 30px 40px 20px;
   }
 `;
 
-export const PlayerLeft = styled.div`
-  width: 710px;
-`;
-
-export const PlayerRight = styled.div`
-  width: 270px;
-  padding: 20px 40px 40px 30px;
-`;

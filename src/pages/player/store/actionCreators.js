@@ -1,123 +1,223 @@
-import { getSongDetail, getLyric } from "@/services/player";
+import * as actionType from "./actionType";
+import { getSongDetail, getLyric, getHotComment } from "@/services/player";
 import { getRandomNumber } from "@/utils/math-utils";
 import { parseLyric } from "@/utils/parse-lyric";
-import { addPlaylistId } from "@/utils/localstorage";
-
-import * as actionTypes from "./constants";
-
+import { addPlaylistId, setCurrentSongIndex } from "@/utils/localstorage";
+// 歌曲详情Action
 const changeCurrentSongAction = (currentSong) => ({
-  type: actionTypes.CHANGE_CURRENT_SONG,
+  type: actionType.CHANGE_CURRENT_SONG,
   currentSong,
 });
 
+// 更改歌曲索引Action
+export const changeSongIndexAction = (index) => {
+  // 设置本次存储Index
+  setCurrentSongIndex(index);
+  return {
+    type: actionType.CHANGE_CURRENT_SONG_INDEX,
+    index,
+  };
+};
+
 // 更改播放列表Action
-const changePlayListAction = (playList) => ({
-  type: actionTypes.CHANGE_PLAY_LIST,
+export const changePlayListAction = (playList) => ({
+  type: actionType.CHANGE_PLAY_LIST,
   playList,
+});
+
+// 改变歌词Action
+const changeLyricAction = (lyric) => ({
+  type: actionType.CHANGE_LYRIC_LIST,
+  lyric,
+});
+
+// 改变热门评论Action
+const changeHotComment = (hotComments) => ({
+  type: actionType.CHANGE_HOT_COMMENT,
+  hotComments,
 });
 
 // 改变歌曲数量
 const changePlayListCount = (count) => ({
-  type: actionTypes.CHANGE_PLAY_LIST_COUNT,
+  type: actionType.CHANGE_PLAY_LIST_COUNT,
   count,
 });
-const changeCurrentSongIndexAction = (index) => ({
-  type: actionTypes.CHANGE_CURRENT_SONG_INDEX,
+
+// 首次加载Action
+export const changeFirstLoad = (isFirstLoad) => ({
+  type: actionType.CHANGE_FIRST_LOAD,
+  isLoad: isFirstLoad,
+});
+
+// 改变currentLyricIndex
+export const changeCurrentLyricIndexAction = (index) => ({
+  type: actionType.CHANGE_CURRENT_LYRIC_INDEX,
   index,
 });
 
-// 歌词
-const changeLyricListAction = (lyricList) => ({
-  type: actionTypes.CHANGE_LYRICS_LIST,
-  lyricList,
-});
-
-// 对外暴露的action
-export const changeSequenceAction = (sequence) => ({
-  type: actionTypes.CHANGE_SEQUENCE,
+// 更改播放顺序Action
+export const changePlaySequenceAction = (sequence) => ({
+  type: actionType.CHANGE_PLAY_SEQUENCE,
   sequence,
 });
 
-// 歌词
-export const changeCurrentLyricIndexAction = (index) => ({
-  type: actionTypes.CHANGE_CURRENT_LYRIC_INDEX,
-  index,
+// 更改播放顺序Action
+export const changeCurrentCommentTotal = (total) => ({
+  type: actionType.CHANGE_CURRENT_TOTAL,
+  total,
 });
 
-export const changeCUrrentIndexAndSongAction = (tag) => {
+// 切换歌曲Action
+export const changeCurrentIndexAndSongAction = (tag) => {
   return (dispatch, getState) => {
+    // 根据playSequence决定是顺序播放还是随机播放
+    const playSequence = getState().getIn(["player", "playSequence"]);
+    // 播放列表
     const playList = getState().getIn(["player", "playList"]);
-    const sequence = getState().getIn(["player", "sequence"]);
+    // 当前播放的索引/下标
     let currentSongIndex = getState().getIn(["player", "currentSongIndex"]);
 
-    switch (sequence) {
+    // 根据播放顺序选择下一首音乐
+    switch (playSequence) {
       case 1: // 随机播放
-        let randomIndex = getRandomNumber(playList.length);
-        while (randomIndex === currentSongIndex) {
-          randomIndex = getRandomNumber(playList.length);
+        // 生成一个随机数
+        let random = getRandomNumber(playList.length);
+        while (random === currentSongIndex) {
+          random = getRandomNumber(playList.length);
         }
-        currentSongIndex = randomIndex;
+        // 更改当前播放音乐的下标
+        currentSongIndex = random;
         break;
       default:
         // 顺序播放
+        // 更改当前播放音乐的下标
         currentSongIndex += tag;
+        // 判断当前音乐的下标是否超出播放列表长度
         if (currentSongIndex >= playList.length) currentSongIndex = 0;
         if (currentSongIndex < 0) currentSongIndex = playList.length - 1;
     }
 
-    const currentSong = playList[currentSongIndex];
-    dispatch(changeCurrentSongAction(currentSong));
-    dispatch(changeCurrentSongIndexAction(currentSongIndex));
-
-    // 请求歌词
-    // dispatch(getLyricAction(currentSong.id));
+    // 获取需要播放的音乐
+    const song = playList[currentSongIndex];
+    // 更改当前播放的音乐
+    dispatch(changeCurrentSongAction(song));
+    dispatch(changeSongIndexAction(currentSongIndex));
+    // 请求歌曲的歌词
+    dispatch(getLyricAction(song.id));
   };
 };
 
-export const getSongDetailAction = (ids) => {
-  return (dispatch, getState) => {
+// 修改播放列表并修改歌曲数量
+export const changePlaylistAndCount = (playlist) => {
+  return (dispatch) => {
+    dispatch(changePlayListAction(playlist));
+    dispatch(changePlayListCount(playlist.length));
+  };
+};
+
+// 歌曲详情network request
+export const getSongDetailAction = (idx) => {
+  return async (dispatch, getState) => {
+    // debugger
     // 1.根据id查找playList中是否已经有了该歌曲
     const playList = getState().getIn(["player", "playList"]);
-    const songIndex = playList.findIndex((song) => song.id === ids);
-
-    // 2.判断是否找到歌曲
+    const songIndex = playList.findIndex((song) => song.id === idx);
     let song = null;
+    // 2.判断是否找到歌曲
     if (songIndex !== -1) {
-      // 查找歌曲
-      dispatch(changeCurrentSongIndexAction(songIndex));
+      // 找到歌曲
+      // 设置当前播放歌曲的currentIndex
+      dispatch(changeSongIndexAction(songIndex));
       song = playList[songIndex];
+      // 设置当前播放的歌曲
       dispatch(changeCurrentSongAction(song));
-      dispatch(getLyricAction(song.id));
+      // 请求歌曲的歌词
+      dispatch(getLyricAction(idx));
     } else {
-      // 没有找到歌曲
-      // 请求歌曲数据
-      getSongDetail(ids).then((res) => {
-        song = res.songs && res.songs[0];
+      // 没找到歌曲
+      // 请求该歌曲的数据
+      // console.log(1)
+      await getSongDetail(idx).then((res) => {
+        console.log(res.songs[0]);
+        // (0)歌曲ID添加到本地存储
+        addPlaylistId(idx);
+        const song = res.songs && res.songs[0];
+        // console.log(song)
         if (!song) return;
-
-        // 1.将最新请求到的歌曲添加到播放列表中
-        const newPlayList = [...playList];
-        newPlayList.push(song);
-
-        // 2.更新redux中的值
-        dispatch(changePlayListAction(newPlayList));
-        dispatch(changeCurrentSongIndexAction(newPlayList.length - 1));
+        // (1)添加到播放列表中
+        playList.push(song);
+        dispatch(changePlayListAction(playList));
+        // (2)更改当前播放的索引
+        const songIndex = playList.length - 1;
+        dispatch(changeSongIndexAction(songIndex));
+        // (3)更改当前播放歌曲
         dispatch(changeCurrentSongAction(song));
-
-        // 3.请求歌词
-        if (!song) return;
-        dispatch(getLyricAction(song.id));
+        // (4)请求歌曲的歌词
+        dispatch(getLyricAction(idx));
+        // (5)更新歌曲数量
+        dispatch(changePlayListCount(playList.length));
       });
+      // console.log(3)
     }
   };
 };
 
+// 歌曲详情network request(只有首次加载才会触发 Action,所以不redux中的playlist肯定不存在歌曲)
+export const getSongDetailArrayAction = (listId, index) => {
+  // 为什么单独抽离: (是根据listId来进行存储的)
+  return (dispatch, getState) => {
+    const playList = getState().getIn(["player", "playList"]);
+    let i = 0;
+    let timer = null;
+    let executeRun = true;
+
+    timer = setInterval(() => {
+      let idx = listId[i];
+      new Promise((resolve, reject) => {
+        executeRun &&
+          getSongDetail(idx).then((res) => {
+            executeRun = false;
+            // console.log(res.songs[0])
+            // (0)歌曲ID添加到本地存储
+            addPlaylistId(idx);
+            const song = res.songs && res.songs[0];
+            // console.log(song)
+            if (!song) return;
+            // (1)添加到播放列表中
+            playList.push(song);
+            dispatch(changePlayListAction(playList));
+            // (2)更改当前播放的索引
+            const songIndex = index ?? playList.length - 1;
+            dispatch(changeSongIndexAction(songIndex));
+            // (3)更改当前播放歌曲
+            let currentIndexSong = playList[songIndex] || song;
+            // console.log(currentIndexSong)
+            dispatch(changeCurrentSongAction(currentIndexSong));
+            // (4)请求歌曲的歌词
+            dispatch(getLyricAction(idx));
+            // (5)更新歌曲数量
+            dispatch(changePlayListCount(playList.length));
+            resolve(i);
+          });
+      }).then((value) => {
+        executeRun = true;
+        // console.log(value)
+      });
+      i++;
+      if (i >= listId.length) {
+        clearInterval(timer);
+      }
+    });
+  };
+};
+
+// 歌词network request
 export const getLyricAction = (id) => {
-  return (dispatch) => {
-    getLyric(id).then((res) => {
-      const lyric = res.lrc.lyric;
+  return async (dispatch) => {
+    await getLyric(id).then((res) => {
+      const lyric = res.lrc && res.lrc.lyric;
       const lyricList = parseLyric(lyric);
-      dispatch(changeLyricListAction(lyricList));
+      dispatch(changeLyricAction(lyricList));
     });
   };
 };
@@ -126,7 +226,7 @@ export const getLyricAction = (id) => {
 export const getAddSongDetailAction = (id) => {
   return (dispatch, getState) => {
     getSongDetail(id).then((res) => {
-      console.log(res);
+      // (0)歌曲ID添加到本地存储
       addPlaylistId(id);
       const playList = getState().getIn(["player", "playList"]);
       // 先判断是已经存在播放列表,如果不存在,再进行添加
@@ -139,6 +239,16 @@ export const getAddSongDetailAction = (id) => {
       // 派发action
       dispatch(changePlayListAction(playList));
       dispatch(changePlayListCount(playList.length));
+    });
+  };
+};
+
+// 获取歌曲热门评论
+export const getHotCommentAction = (id) => {
+  return (dispatch) => {
+    getHotComment(id).then((res) => {
+      const hotComments = res && res.hotComments;
+      dispatch(changeHotComment(hotComments));
     });
   };
 };

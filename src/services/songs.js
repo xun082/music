@@ -55,3 +55,14 @@ export function sendCollectSonglist(id, cookie) {
     }
   })
 }
+
+
+// 歌曲详情网络请求
+export function getSongDetailData(id) {
+  return request({
+    url: '/playlist/detail',
+    params: {
+      id
+    }
+  })
+}

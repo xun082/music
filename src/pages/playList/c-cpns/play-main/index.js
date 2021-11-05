@@ -111,7 +111,7 @@ export default memo(function HYPlayMain() {
             {newCommentList &&
               newCommentList.map((item, index) => {
                 return <CommentCard key={index} info={item} />;
-              })}{" "}
+              })}
             {/* 分页 */}
             <HYPagination
               currentPage={currentPage}

@@ -1,12 +1,13 @@
 import { Map } from "immutable";
-
-import * as actionTypes from "./constants";
+import * as actionType from "./actionType";
+// 使用immutable管理state
 
 const defaultState = Map({
-  currentSong: {},
   playList: [],
   currentSongIndex: 0,
-  sequence: 0, // 0循环 1随机 2 单曲
+  currentSong: {},
+  playSequence: 0, // 0循环播放  1随机播放  2单曲循环
+  firstLoad: true,
   lyricList: [],
   currentLyricIndex: 0,
   addSongDetail: {},
@@ -17,25 +18,27 @@ const defaultState = Map({
 
 function reducer(state = defaultState, action) {
   switch (action.type) {
-    case actionTypes.CHANGE_CURRENT_SONG:
+    case actionType.CHANGE_CURRENT_SONG:
       return state.set("currentSong", action.currentSong);
-    case actionTypes.CHANGE_PLAY_LIST:
+    case actionType.CHANGE_PLAY_LIST:
       return state.set("playList", action.playList);
-    case actionTypes.CHANGE_CURRENT_SONG_INDEX:
+    case actionType.CHANGE_CURRENT_SONG_INDEX:
       return state.set("currentSongIndex", action.index);
-    case actionTypes.CHANGE_SEQUENCE:
-      return state.set("sequence", action.sequence);
-    case actionTypes.CHANGE_LYRICS_LIST:
-      return state.set("lyricList", action.lyricList);
-    case actionTypes.CHANGE_CURRENT_LYRIC_INDEX:
+    case actionType.CHANGE_PLAY_SEQUENCE:
+      return state.set("playSequence", action.sequence);
+    case actionType.CHANGE_FIRST_LOAD:
+      return state.set("firstLoad", action.isLoad);
+    case actionType.CHANGE_LYRIC_LIST:
+      return state.set("lyricList", action.lyric);
+    case actionType.CHANGE_CURRENT_LYRIC_INDEX:
       return state.set("currentLyricIndex", action.index);
-    case actionTypes.CHANGE_ADD_SONG_DETAIL:
+    case actionType.CHANGE_ADD_SONG_DETAIL:
       return state.set("addSongDetail", action.addSongDetail);
-    case actionTypes.CHANGE_PLAY_LIST_COUNT:
+    case actionType.CHANGE_PLAY_LIST_COUNT:
       return state.set("playListCount", action.count);
-    case actionTypes.CHANGE_HOT_COMMENT:
+    case actionType.CHANGE_HOT_COMMENT:
       return state.set("hotComments", action.hotComments);
-    case actionTypes.CHANGE_CURRENT_TOTAL:
+    case actionType.CHANGE_CURRENT_TOTAL:
       return state.set("currentCommentTotal", action.total);
     default:
       return state;

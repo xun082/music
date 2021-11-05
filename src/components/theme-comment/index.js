@@ -13,7 +13,8 @@ export default memo(function CommentCard(props) {
   const [flag, setFlag] = useState(false);
 
   const { info } = props;
-  const time = formatMonthDay(info.time, "MM月dd日");
+  const timer = info && info.time;
+  const time = formatMonthDay(timer);
   const picUrl = info && info.user.avatarUrl;
   const dispatch = useDispatch();
 
@@ -28,6 +29,8 @@ export default memo(function CommentCard(props) {
   const id = info && info.commentId;
   let liked = info && info.liked;
   let likedCount = info && info.likedCount;
+  const name = info && info.user && info.user.nickname;
+  const content = info && info.content;
 
   const sendCommentLink = () => {
     if (!isLogin) {
@@ -58,9 +61,9 @@ export default memo(function CommentCard(props) {
       </div>
       <div className="main">
         <a href="/#" className="name">
-          {info.user.nickname}
+          {name}
         </a>
-        <span className="content">： {info.content}</span>
+        <span className="content">： {content}</span>
         <div className="control">
           <div className="time">{time}</div>
           <div className="right-control">
