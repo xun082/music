@@ -202,7 +202,7 @@ export default memo(function JMAppPlayerBar() {
 
   return (
     <PlayBarWrapper className="sprite_player">
-      <div className="wrap-v2 content">
+      <div className="wrap-v2  content">
         <Control isPlaying={isPlaying}>
           <button
             className="sprite_player pre"

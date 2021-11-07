@@ -84,9 +84,8 @@ body, textarea, select, input, button {
 }
 
 .wrap-back{
-  background: url('../img/wrap-bg.png') repeat-y;
+  /* background: url('../img/wrap-bg.png') repeat-y; */
   background-color: #fff;
-  display: flex;
 }
 
 .sprite_01 {
@@ -95,6 +94,10 @@ body, textarea, select, input, button {
 
 .tab_icon {
   background: url(../img/tab.png) no-repeat 0 9999px;
+}
+
+.mask_icon {
+  background: url(../img/mask.png) no-repeat 0 9999px;
 }
 
 .anchor_icon{

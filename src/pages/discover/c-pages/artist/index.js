@@ -6,7 +6,7 @@ import HYArtistList from "./c-cpns/artist-list";
 
 export default memo(function HYArtist() {
   return (
-    <ArtistWrapper className="wrap-v2">
+    <ArtistWrapper className="wrap-v2 wrap-back">
       <ArtistWrapperLeft>
         <HYArtistCategory />
       </ArtistWrapperLeft>

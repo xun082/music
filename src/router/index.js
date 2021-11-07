@@ -23,6 +23,7 @@ import HYArtistDesc from "../pages/artist-detail/c-cpns/desc";
 import HYAlbumDetail from "../pages/album-detail";
 import HYAnchorDetail from "../pages/anchor-detail";
 import HYSongDetail from "../pages/player";
+import HYMv from "../pages/movie";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
@@ -80,6 +81,11 @@ const routes = [
         path: "/discover/artist",
         exact: true,
         component: HYArtist,
+      },
+      {
+        path: "/discover/mv",
+        exact: true,
+        component: HYMv,
       },
       {
         path: "/discover/artist/detail",

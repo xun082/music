@@ -41,7 +41,7 @@ export default memo(function HYTopBanner() {
 
   return (
     <BannerWrapper bgImage={bgImage}>
-      <div className="banner wrap-v2">
+      <div className="banner wrap-v2 wrap-back">
         <BannerLeft>
           <Carousel
             effect="fade"

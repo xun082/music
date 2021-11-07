@@ -37,7 +37,7 @@ export default memo(function HYRanking(props) {
   }, [dispatch, currentRanKingListId, props]);
 
   return (
-    <RankingWrapper className="wrap-v2">
+    <RankingWrapper className="wrap-v2 wrap-back">
       <RankingWrapperLeft>
         <div className="header">
           <div className="header">云音乐特色榜</div>

@@ -8,7 +8,7 @@ import HYDayDesc from "./c-cpns/day-right";
 
 export default memo(function HYDayRecommend() {
   return (
-    <DayRecommendWrapper className="wrap-v2">
+    <DayRecommendWrapper className="wrap-v2 wrap-back">
       <div className="left">
         <HYDayHeader />
         <HYDayMain />

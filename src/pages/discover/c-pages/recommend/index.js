@@ -19,7 +19,7 @@ function HYRecommend(props) {
   return (
     <RecommendWrapper>
       <HYTopBanner />
-      <Content className="wrap-v2">
+      <Content className="wrap-v2 wrap-back">
         <RecommendLeft>
           <HYHotRecommend />
           <HYNewAlbum />

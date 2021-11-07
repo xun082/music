@@ -325,7 +325,7 @@ export const getHotCommentAction = (id, limit, offset) => {
   };
 };
 
-// 获取歌曲热门评论
+// 获取相似歌曲
 export const getSimilarSongAction = (id) => {
   return (dispatch) => {
     getSimilarSong(id).then((res) => {

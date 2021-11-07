@@ -12,19 +12,22 @@ import { useAddPlaylist } from "@/hooks/change-music";
 import { message } from "antd";
 
 export default memo(function ThemeSongCard(props) {
+  const { index, info } = props;
+
   const { playlist } = useSelector(
     (state) => ({
       playlist: state.getIn(["player", "playList"]),
     }),
     shallowEqual
   );
-  const { index, info } = props;
 
+  console.log(info);
   const name = info.name;
   const time = info && info.dt;
   const album = info && info.al && info.al.name;
   const albumId = info && info.al && info.al.id;
   const id = info && info.id;
+  const mv = info && info.mv;
   // 待完成
   // const singer =
   //   info &&
@@ -60,7 +63,11 @@ export default memo(function ThemeSongCard(props) {
           {name}
         </a>
         {info.mv !== 0 ? (
-          <a href="#/info.mv" className="tv sprite_table">
+          <a
+            rel="noopener noreferrer"
+            href={`#/discover/mv?id=${mv}`}
+            className="tv sprite_table"
+          >
             {""}
           </a>
         ) : (

@@ -10,7 +10,7 @@ import { getQueryObject } from "@/utils/format-utils";
 export default memo(function HYAnchorDetail() {
   // const { pid, id } = getQueryObject();
   return (
-    <AnchorDetailWrapper className="wrap-v2">
+    <AnchorDetailWrapper className="wrap-v2 wrap-back">
       <div className="left wrap-v3">
         {getQueryObject().id !== undefined ? (
           <div className="content">

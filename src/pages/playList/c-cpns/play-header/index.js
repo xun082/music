@@ -20,7 +20,7 @@ export default memo(function HYPlayHeader() {
     shallowEqual
   );
 
-  let { id } = getQueryObject();
+  const { id } = getQueryObject();
   const picUrl = playListInfo && playListInfo.coverImgUrl;
   const name = playListInfo && playListInfo.name;
   const time = playListInfo && playListInfo.createTime;

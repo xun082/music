@@ -55,7 +55,7 @@ export default memo(function HYAnchor() {
               <AnchorLeft />
               <AnchorRight />
             </div>
-            <div className="radio-station">
+            <div className="radio-station wrap-back">
               <AnchorRadio title={"音乐推荐"} info={anchorMusic} />
               <AnchorRadio title={"生活"} info={anchorLife} />
               <AnchorRadio title={"情感"} info={anchorKnowledge} />

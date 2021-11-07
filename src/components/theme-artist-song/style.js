@@ -15,7 +15,7 @@ export const SongCardWrapper = styled.div`
     .icon {
       background-position: -2px -218px;
       &:hover {
-        background-position: -2px -111px;
+        background-position: -2px -112px;
       }
     }
     div {

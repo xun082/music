@@ -7,7 +7,7 @@ import HYPlayRight from "./c-cpns/play-right";
 
 export default memo(function HYPlayList() {
   return (
-    <PlayListWrapper className="wrap-v2">
+    <PlayListWrapper className="wrap-v2 wrap-back">
       <div className="left">
         <HYPlayHeader />
         <HYPlayMain />

@@ -125,7 +125,7 @@ export default memo(function Profile(props) {
   };
 
   return (
-    <ProfileWrapper className="wrap-v2">
+    <ProfileWrapper className="wrap-v2 wrap-back">
       {/* 登录鉴权组件 */}
       <Authentication flag={isLogin} to={toRedirect} showModal={showModal} />
       <div className="user-info">
