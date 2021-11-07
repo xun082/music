@@ -11,9 +11,17 @@ const defaultState = Map({
   lyricList: [],
   currentLyricIndex: 0,
   addSongDetail: {},
-  playListCount: 5,
+  playListCount: 1,
+
+  newComments: [],
   hotComments: [],
-  currentCommentTotal: 0,
+  commentTotal: 0,
+  currentPage: 1,
+  // 歌曲详情
+  songLyric: [],
+  songInfo: {},
+  similarSong: [], //相似歌曲
+  similarAlbum: [], //包含这首歌的歌单
 });
 
 function reducer(state = defaultState, action) {
@@ -37,9 +45,21 @@ function reducer(state = defaultState, action) {
     case actionType.CHANGE_PLAY_LIST_COUNT:
       return state.set("playListCount", action.count);
     case actionType.CHANGE_HOT_COMMENT:
-      return state.set("hotComments", action.hotComments);
-    case actionType.CHANGE_CURRENT_TOTAL:
-      return state.set("currentCommentTotal", action.total);
+      return state.set("hotComments", action.res);
+    case actionType.CHANGE_NEW_COMMENT:
+      return state.set("newComments", action.res);
+    case actionType.CHANGE_PAGE_TOTAL:
+      return state.set("commentTotal", action.res);
+    case actionType.CHANGE_CURRENT_PAGE:
+      return state.set("currentPage", action.res);
+    case actionType.CHANGE_DETAIL_LYRIC:
+      return state.set("songLyric", action.res);
+    case actionType.CHANGE_SONG_DETAIL_INFO:
+      return state.set("songInfo", action.res);
+    case actionType.CHANGE_SIMILAR_SONG:
+      return state.set("similarSong", action.res);
+    case actionType.CHANGE_SIMILAR_ALBUM:
+      return state.set("similarAlbum", action.res);
     default:
       return state;
   }

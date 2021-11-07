@@ -1,11 +1,13 @@
 import React, { memo } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import propTypes from "prop-types";
-import { NavLink } from "react-router-dom";
 import { useAddPlaylist } from "@/hooks/change-music";
 
 import { getSizeImage } from "@/utils/format-utils.js";
-import { getSongDetailAction } from "@/pages/player/store";
+import {
+  getSongDetailAction,
+  changeFirstLoad,
+} from "@/pages/player/store/actionCreators";
 
 import { SongItemWrapper } from "./style";
 import { PlayCircleOutlined } from "@ant-design/icons";
@@ -21,6 +23,7 @@ function SongItem(props) {
     songId,
     songName,
     className = "",
+    singerId,
   } = props;
 
   // redux hook
@@ -33,32 +36,41 @@ function SongItem(props) {
   );
 
   // other function
-  const playMusic = (e, isTo = false) => {
+  const playMusic = (e, item) => {
     // 如果不跳转,那么组织超链接的默认行为
-    if (!isTo) e.preventDefault();
-    dispatch(getSongDetailAction(songId));
+
+    e.preventDefault();
+    // 派发action 歌曲详情
+    dispatch(getSongDetailAction(item));
+    // 不是首次加载,播放音乐
+    dispatch(changeFirstLoad(false));
   };
+
   const addPlaylist = useAddPlaylist(playlist, message);
 
   return (
     <SongItemWrapper className={className} isPic={coverPic}>
       <div className="song-item rank-count">{currentRanking}</div>
       {coverPic && (
-        <NavLink
-          to="/discover/song"
+        <a
+          rel="noopener noreferrer"
+          href={`#/discover/song?id=${songId}`}
           className="song-item"
-          onClick={(e) => playMusic(e, true)}
         >
           <img src={getSizeImage(coverPic, 50)} alt="" />
-        </NavLink>
+        </a>
       )}
       <div className="song-item song-info">
         <div className="left-info">
           <PlayCircleOutlined
             className="font-active"
-            onClick={(e) => playMusic(e)}
+            onClick={(e) => playMusic(e, songId)}
           />
-          <a href="/play" onClick={(e) => playMusic(e)} className="text-nowrap">
+          <a
+            rel="noopener noreferrer"
+            href={`#/discover/song?id=${songId}`}
+            className="text-nowrap"
+          >
             {songName}
           </a>
         </div>
@@ -71,9 +83,13 @@ function SongItem(props) {
         </div>
       </div>
       <div className="song-item duration">{duration}</div>
-      <NavLink to="/discover/song" className="song-item singer">
+      <a
+        rel="noopener noreferrer"
+        href={`#/discover/artist/detail?id=${singerId}`}
+        className="song-item singer"
+      >
         {singer}
-      </NavLink>
+      </a>
     </SongItemWrapper>
   );
 }

@@ -26,6 +26,7 @@ import HYSongDetail from "../pages/player";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
 // import HYRecommend from "@/pages/discover/c-pages/recommend";
+// const HYSongDetail = React.lazy(() => import("../pages/player"));
 
 const routes = [
   {
@@ -57,10 +58,12 @@ const routes = [
       },
       {
         path: "/discover/songs",
+        exact: true,
         component: HYSongs,
       },
       {
         path: "/discover/song",
+        exact: true,
         component: HYSongDetail,
       },
       {

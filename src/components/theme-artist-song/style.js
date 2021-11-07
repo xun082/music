@@ -13,7 +13,7 @@ export const SongCardWrapper = styled.div`
     padding: 0 10px;
     align-items: center;
     .icon {
-      background-position: -2px -216px;
+      background-position: -2px -218px;
       &:hover {
         background-position: -2px -111px;
       }

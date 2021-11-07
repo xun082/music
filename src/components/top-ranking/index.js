@@ -2,7 +2,10 @@ import React, { memo } from "react";
 // import { useDispatch } from "react-redux";
 
 import { getSizeImage } from "@/utils/format-utils";
-import { getSongDetailAction } from "@/pages/player/store";
+import {
+  getSongDetailAction,
+  changeFirstLoad,
+} from "@/pages/player/store/actionCreators";
 
 import { TopRankingWrapper } from "./style";
 import { useDispatch } from "react-redux";
@@ -16,9 +19,14 @@ export default memo(function HYTopRanking(props) {
   const dispatch = useDispatch();
 
   // other handle
-  const playMusic = (item) => {
+  const playMusic = (e, item) => {
+    e.preventDefault();
+    // 派发action 歌曲详情
     dispatch(getSongDetailAction(item.id));
+    // 不是首次加载,播放音乐
+    dispatch(changeFirstLoad(false));
   };
+
   return (
     <TopRankingWrapper>
       <div className="header">
@@ -46,7 +54,7 @@ export default memo(function HYTopRanking(props) {
                 <div className="operate">
                   <button
                     className="btn sprite_02 play"
-                    onClick={(e) => playMusic(item)}
+                    onClick={(e) => playMusic(e, item)}
                   ></button>
                   <button className="btn sprite_icon2 addto"></button>
                   <button className="btn sprite_02 favor"></button>

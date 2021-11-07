@@ -81,7 +81,6 @@ function SliderPlaylist(props) {
 
   return (
     <SliderPlaylistWrapper
-      
       style={{ visibility: isShowSlider ? "visible" : "hidden" }}
       // 阻止事件冒泡
       onClick={(e) => e.stopPropagation()}

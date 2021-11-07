@@ -24,7 +24,6 @@ export const getPlayListAction = (id, s, cookie) => {
       const item = res && res.playlist;
       const arr = item && item.tracks;
       const subscribers = item && item.subscribers;
-      console.log(subscribers);
       dispatch(changePlayListInfoAction(item));
       dispatch(changePlayListArrayAction(arr));
       dispatch(changePlayListLikedAction(subscribers));

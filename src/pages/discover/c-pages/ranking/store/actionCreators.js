@@ -65,8 +65,8 @@ const changeRankingTotal = (list) => ({
 export const getRanKingTitleInfoAction = (id = 19723756) => {
   return (dispatch) => {
     getTopListDetail(id).then((res) => {
-      console.log(res);
       // 取出榜单标题详情信息
+      console.log(res);
       const {
         coverImgUrl,
         name,
@@ -76,6 +76,7 @@ export const getRanKingTitleInfoAction = (id = 19723756) => {
         commentCount,
         shareCount,
       } = res && res.playlist;
+
       const ranKingTitleInfo = {
         coverImgUrl,
         name,
@@ -93,7 +94,6 @@ export const getRanKingTitleInfoAction = (id = 19723756) => {
 export const getRankingListAction = () => {
   return (dispatch) => {
     getTopListInfo().then((res) => {
-      console.log(res);
       dispatch(changeRankingListAction(res));
     });
   };
@@ -115,7 +115,7 @@ export const getRanKingHotCommentAction = (id, type) => {
   return (dispatch) => {
     getTopListComment(id, type).then((res) => {
       const data = res && res.data && res.data.comments;
-      console.log(data);
+
       dispatch(changeRankingHotComment(data));
     });
   };
@@ -126,7 +126,7 @@ export const getRanKingNewCommentAction = (id, limit = 20, offset) => {
   return (dispatch) => {
     getTopListNewComment(id, limit, offset).then((res) => {
       const comment = res && res.comments;
-      console.log(comment);
+
       const total = res && res.total;
       dispatch(changeRankingNewComment(comment));
       dispatch(changeRankingTotal(total));

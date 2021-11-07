@@ -59,9 +59,13 @@ export default memo(function JMAppPlayerBar() {
 
   // 切换歌曲时播放音乐
   useEffect(() => {
-    dispatch(getSongDetailAction(415792881)); //默认打开的歌曲
     isPlaying && audioRef.current.play();
   }, [isPlaying, dispatch]);
+
+  // 默认歌曲
+  useEffect(() => {
+    dispatch(getSongDetailAction(28940048));
+  }, [dispatch]);
 
   // other handle
   const picUrl = currentSong.al && currentSong.al.picUrl; // 图片url
@@ -211,15 +215,13 @@ export default memo(function JMAppPlayerBar() {
           ></button>
         </Control>
         <PlayInfo>
-          <NavLink
-            to={{
-              pathname: `/discover/song?id=${songId}`,
-            }}
+          <a
             className="image"
+            rel="noopener noreferrer"
+            href={`#/discover/song?id=${songId}`}
           >
-            <img src={getSizeImage(picUrl, 35)} alt="" />
-          </NavLink>
-
+            <img src={getSizeImage(picUrl, 35)} alt="" />{" "}
+          </a>
           <div className="play-detail">
             <div className="song-info">
               <NavLink to="/discover/song" className="song-name">

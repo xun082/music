@@ -24,10 +24,12 @@ export const SongCardWrapper = styled.div`
       height: 19px;
     }
     .icon {
+      cursor: pointer;
       background-position: -2px -216px;
     }
   }
   .song-title {
+    cursor: pointer;
     width: 235px;
   }
   .length {
@@ -50,6 +52,7 @@ export const SongCardWrapper = styled.div`
       justify-content: space-between;
       align-items: center;
       .icon {
+        cursor: pointer;
         width: 18px;
         height: 18px;
       }
@@ -81,6 +84,10 @@ export const SongCardWrapper = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     width: 127px;
+    display: block;
+    padding: 0 10px;
+    line-height: 30px;
+    box-sizing: border-box;
   }
   &:hover {
     .control {

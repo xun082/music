@@ -6,7 +6,6 @@ const defaultState = Map({
   ranKingList: [],
   currentIndex: 0,
   currentRanKingListId: 19723756,
-  // currentRanKingListTitleInfo: {},
   rankingTitleInfo: {},
   currentRanKingList: [],
   hotCommentList: [],

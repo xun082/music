@@ -5,6 +5,7 @@ import { shallowEqual, useSelector, useDispatch } from "react-redux";
 import { PlayRightWrapper } from "./style";
 import { getSizeImage } from "@/utils/format-utils";
 import { getSongList } from "@/pages/discover/c-pages/songs/store/actionCreators";
+import ThemePlayListRight from "@/components/theme-right-playlist";
 
 export default memo(function HYPlayRight() {
   const { playListLiked, playlists } = useSelector(
@@ -36,22 +37,7 @@ export default memo(function HYPlayRight() {
 
       {playlists &&
         playlists.map((item, index) => {
-          return (
-            <div className="playlist" key={index}>
-              <div className="img">
-                <img src={getSizeImage(item.coverImgUrl, 50)} alt="" />
-              </div>
-              <a
-                target="view_window"
-                rel="noopener noreferrer"
-                href={`#/discover/playlist?id=${item.id}`}
-                className="info"
-              >
-                <div className="text">{item.name}</div>
-                <div className="text">{item.creator.nickname}</div>
-              </a>
-            </div>
-          );
+          return <ThemePlayListRight key={index} info={item} />;
         })}
     </PlayRightWrapper>
   );

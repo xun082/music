@@ -5,8 +5,8 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { ProgramMainWrapper } from "./style";
 import { getQueryObject } from "@/utils/format-utils";
 import {
-  getProgramCommentAction,
-  getProgramCommentTotalAction,
+  getHotCommentAction,
+  getSongCommentTotalAction,
 } from "../../store/actionCreators";
 import ThemeHeaderRcm from "@/components/theme-header-rcm";
 import CommentForm from "@/components/comment-form";
@@ -14,23 +14,23 @@ import CommentCard from "@/components/theme-comment";
 import HYPagination from "@/components/pagination";
 
 export default memo(function HYSongMain() {
-  const { NewComment, commentTotal, currentPage, HotComment } = useSelector(
+  const { newComments, hotComments, commentTotal, currentPage } = useSelector(
     (state) => ({
-      NewComment: state.getIn(["anchorDetail", "programNewComment"]),
-      HotComment: state.getIn(["anchorDetail", "programHotComment"]),
-      commentTotal: state.getIn(["anchorDetail", "commentTotal"]),
-      currentPage: state.getIn(["anchorDetail", "currentPage"]),
+      newComments: state.getIn(["player", "newComments"]),
+      hotComments: state.getIn(["player", "hotComments"]),
+      commentTotal: state.getIn(["player", "commentTotal"]),
+      currentPage: state.getIn(["player", "currentPage"]),
     }),
     shallowEqual
   );
 
-  const { pid } = getQueryObject();
+  const { id } = getQueryObject();
 
   const targePageCount = (currentPage - 1) * 20;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProgramCommentAction(pid, 20, targePageCount));
-  }, [dispatch, pid, targePageCount]);
+    dispatch(getHotCommentAction(id, 20, targePageCount));
+  }, [dispatch, id, targePageCount]);
 
   // 评论
   const handleClick = () => {
@@ -40,7 +40,7 @@ export default memo(function HYSongMain() {
   // 翻页
   const changePage = useCallback(
     (currentPage) => {
-      dispatch(getProgramCommentTotalAction(currentPage));
+      dispatch(getSongCommentTotalAction(currentPage));
     },
     [dispatch]
   );
@@ -56,11 +56,11 @@ export default memo(function HYSongMain() {
         <div className="comment-control">
           <CommentForm handle={(e) => handleClick(e)} />
         </div>
-        {HotComment !== null ? (
+        {hotComments !== null ? (
           <div className="comment-list">
             <div className="comment-header">精彩评论</div>
-            {HotComment &&
-              HotComment.map((item, index) => {
+            {hotComments &&
+              hotComments.map((item, index) => {
                 return (
                   <CommentCard
                     key={index}
@@ -74,11 +74,11 @@ export default memo(function HYSongMain() {
           ""
         )}
         <div className="comment-list">
-          {NewComment ? (
+          {newComments ? (
             <div className="hot">
               <div className="comment-header">最新评论</div>
-              {NewComment &&
-                NewComment.map((item, index) => {
+              {newComments &&
+                newComments.map((item, index) => {
                   return (
                     <CommentCard
                       key={index}

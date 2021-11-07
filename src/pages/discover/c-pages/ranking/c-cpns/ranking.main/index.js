@@ -22,7 +22,7 @@ function RanKingMain() {
   const dispatch = useDispatch();
 
   const {
-    playCount,
+    rankingTitleInfo,
     currentRanKingList,
     hotCommentList,
     newCommentList,
@@ -31,11 +31,7 @@ function RanKingMain() {
     cookie,
   } = useSelector(
     (state) => ({
-      playCount: state.getIn([
-        "ranking",
-        "currentRanKingListTitleInfo",
-        "playCount",
-      ]),
+      rankingTitleInfo: state.getIn(["ranking", "rankingTitleInfo"]),
       currentRanKingList: state.getIn(["ranking", "currentRanKingList"]),
       hotCommentList: state.getIn(["ranking", "hotCommentList"]),
       newCommentList: state.getIn(["ranking", "newCommentList"]),
@@ -45,6 +41,8 @@ function RanKingMain() {
     }),
     shallowEqual
   );
+
+  const playCount = rankingTitleInfo && rankingTitleInfo.playCount;
 
   const targePageCount = (currentPage - 1) * 20;
   const { id } = getQueryObject();
@@ -103,6 +101,7 @@ function RanKingMain() {
                   songName={item.name}
                   singer={item.ar[0].name}
                   songId={item.id}
+                  singerId={item.ar[0].id}
                 />
               );
             })}

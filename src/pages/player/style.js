@@ -11,4 +11,3 @@ export const PlayerWrapper = styled.div`
     padding: 40px 30px 40px 20px;
   }
 `;
-

@@ -1,8 +1,15 @@
 import * as actionType from "./actionType";
-import { getSongDetail, getLyric, getHotComment } from "@/services/player";
+import {
+  getSongDetail,
+  getLyric,
+  getSongComment,
+  getSimilarSong,
+  getSimilarAlbum,
+} from "@/services/player";
 import { getRandomNumber } from "@/utils/math-utils";
 import { parseLyric } from "@/utils/parse-lyric";
 import { addPlaylistId, setCurrentSongIndex } from "@/utils/localstorage";
+
 // 歌曲详情Action
 const changeCurrentSongAction = (currentSong) => ({
   type: actionType.CHANGE_CURRENT_SONG,
@@ -29,12 +36,6 @@ export const changePlayListAction = (playList) => ({
 const changeLyricAction = (lyric) => ({
   type: actionType.CHANGE_LYRIC_LIST,
   lyric,
-});
-
-// 改变热门评论Action
-const changeHotComment = (hotComments) => ({
-  type: actionType.CHANGE_HOT_COMMENT,
-  hotComments,
 });
 
 // 改变歌曲数量
@@ -65,6 +66,54 @@ export const changePlaySequenceAction = (sequence) => ({
 export const changeCurrentCommentTotal = (total) => ({
   type: actionType.CHANGE_CURRENT_TOTAL,
   total,
+});
+
+// 歌曲详情歌词
+export const changeSongDetailLyricAction = (res) => ({
+  type: actionType.CHANGE_DETAIL_LYRIC,
+  res,
+});
+
+// 歌曲详情信息
+export const changeSongDetailInfoAction = (res) => ({
+  type: actionType.CHANGE_SONG_DETAIL_INFO,
+  res,
+});
+
+// 热门评论
+const changeSongHotCommentAction = (res) => ({
+  type: actionType.CHANGE_HOT_COMMENT,
+  res,
+});
+
+// 节目新评论
+const changeSongNewCommentAction = (res) => ({
+  type: actionType.CHANGE_NEW_COMMENT,
+  res,
+});
+
+// 分页初始页
+const changeSongCurrentPage = (res) => ({
+  type: actionType.CHANGE_CURRENT_PAGE,
+  res,
+});
+
+// 评论total
+const changeSongTotal = (res) => ({
+  type: actionType.CHANGE_PAGE_TOTAL,
+  res,
+});
+
+// 相似歌曲
+const changeSimilarSong = (res) => ({
+  type: actionType.CHANGE_SIMILAR_SONG,
+  res,
+});
+
+// 包含这首歌的歌单
+const changeSimilarAlbumAction = (res) => ({
+  type: actionType.CHANGE_SIMILAR_ALBUM,
+  res,
 });
 
 // 切换歌曲Action
@@ -116,7 +165,7 @@ export const changePlaylistAndCount = (playlist) => {
 };
 
 // 歌曲详情network request
-export const getSongDetailAction = (idx) => {
+export const getSongDetailAction = (idx = 28940048) => {
   return async (dispatch, getState) => {
     // debugger
     // 1.根据id查找playList中是否已经有了该歌曲
@@ -138,7 +187,6 @@ export const getSongDetailAction = (idx) => {
       // 请求该歌曲的数据
       // console.log(1)
       await getSongDetail(idx).then((res) => {
-        console.log(res.songs[0]);
         // (0)歌曲ID添加到本地存储
         addPlaylistId(idx);
         const song = res.songs && res.songs[0];
@@ -157,7 +205,6 @@ export const getSongDetailAction = (idx) => {
         // (5)更新歌曲数量
         dispatch(changePlayListCount(playList.length));
       });
-      // console.log(3)
     }
   };
 };
@@ -243,12 +290,64 @@ export const getAddSongDetailAction = (id) => {
   };
 };
 
-// 获取歌曲热门评论
-export const getHotCommentAction = (id) => {
+// 获取歌曲详情 getSongDetail
+export const getSongInfoAction = (ids) => {
   return (dispatch) => {
-    getHotComment(id).then((res) => {
-      const hotComments = res && res.hotComments;
-      dispatch(changeHotComment(hotComments));
+    getSongDetail(ids).then((res) => {
+      const item = res && res.songs;
+      dispatch(changeSongDetailInfoAction(...item));
     });
+  };
+};
+
+// 获取歌曲详情歌词，可能会和播放的不同，需要重新获取一个
+export const getSongLyricAction = (id) => {
+  return async (dispatch) => {
+    await getLyric(id).then((res) => {
+      const { lyric } = res && res.lrc;
+      const item = parseLyric(lyric);
+      dispatch(changeSongDetailLyricAction(item));
+    });
+  };
+};
+
+// 获取歌曲热门评论
+export const getHotCommentAction = (id, limit, offset) => {
+  return (dispatch) => {
+    getSongComment(id, limit, offset).then((res) => {
+      const hotComments = res && res.hotComments;
+      const comments = res && res.comments;
+      const total = res && res.total;
+      dispatch(changeSongHotCommentAction(hotComments));
+      dispatch(changeSongNewCommentAction(comments));
+      dispatch(changeSongTotal(total));
+    });
+  };
+};
+
+// 获取歌曲热门评论
+export const getSimilarSongAction = (id) => {
+  return (dispatch) => {
+    getSimilarSong(id).then((res) => {
+      const item = res && res.songs;
+      dispatch(changeSimilarSong(item));
+    });
+  };
+};
+
+// 包含这首歌的歌单
+export const getSimilarAlbumAction = (id) => {
+  return (dispatch) => {
+    getSimilarAlbum(id).then((res) => {
+      const item = res && res.playlists;
+      dispatch(changeSimilarAlbumAction(item));
+    });
+  };
+};
+
+// 分页
+export const getSongCommentTotalAction = (currentPage) => {
+  return (dispatch) => {
+    dispatch(changeSongCurrentPage(currentPage));
   };
 };

@@ -56,7 +56,7 @@ export default memo(function HYAlbumHeader() {
             </a>
           </div>
           <div className="time">发行时间：{formatMonthDay(time)}</div>
-          <div className="compony">发行公司：{compony}1</div>
+          <div className="compony">发行公司：{compony}</div>
           <div className="control">
             <ThemeHeaderControl comment={comment} share={share} />
           </div>

@@ -1,16 +1,20 @@
 import React, { memo } from "react";
 
-import { PlayerWrapper} from "./style";
-
+import { PlayerWrapper } from "./style";
+import HYSongHeader from "./song-detail/song-header";
+import HYSongMain from "./song-detail/song-main";
+import HYSongRight from "./song-detail/song-right";
 export default memo(function HYSongDetail() {
   return (
     <PlayerWrapper>
       <div className="wrap-back wrap-v2">
         <div className="left">
-          <h2>HYPlayerInfo</h2>
-          <h2>HYSongContent</h2>
+          <HYSongHeader />
+          <HYSongMain />
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <HYSongRight />
+        </div>
       </div>
     </PlayerWrapper>
   );
