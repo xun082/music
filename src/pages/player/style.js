@@ -8,6 +8,7 @@ export const PlayerWrapper = styled.div`
   }
   .right {
     width: 270px;
+    height: 200px;
     padding: 40px 30px 40px 20px;
   }
 `;

@@ -5,7 +5,6 @@ import { reducer as playerReducer } from "../pages/player/store";
 import { reducer as rankingReducer } from "../pages/discover/c-pages/ranking/store";
 import { reducer as loginReducer } from "@/components/theme-login/store";
 import { reducer as songsReducer } from "../pages/discover/c-pages/songs/store";
-import { reducer as searchReducer } from "@/pages/search/store";
 import { reducer as anchorReducer } from "../pages/discover/c-pages/anchor/store";
 import { reducer as artistReducer } from "../pages/discover/c-pages/artist/store";
 import { reducer as artistDetailReducer } from "../pages/artist-detail/store";
@@ -18,7 +17,6 @@ const cReducer = combineReducers({
   recommend: recommendReducer,
   player: playerReducer,
   ranking: rankingReducer,
-  search: searchReducer,
   loginState: loginReducer,
   songList: songsReducer,
   anchor: anchorReducer,

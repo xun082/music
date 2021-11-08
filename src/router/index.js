@@ -24,10 +24,6 @@ import HYAlbumDetail from "../pages/album-detail";
 import HYAnchorDetail from "../pages/anchor-detail";
 import HYSongDetail from "../pages/player";
 import HYMv from "../pages/movie";
-// import HYRecommend from "@/pages/discover/c-pages/recommend";
-// import HYRecommend from "@/pages/discover/c-pages/recommend";
-// import HYRecommend from "@/pages/discover/c-pages/recommend";
-// const HYSongDetail = React.lazy(() => import("../pages/player"));
 
 const routes = [
   {

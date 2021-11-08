@@ -10,31 +10,36 @@ export const ListCard = styled.div`
   border-left: none;
   height: 62px;
 
-  .image {
-    display: block;
-    height: 61px;
-    width: 62px;
-  }
-  .content {
-    padding-left: 15px;
+  .a {
     width: 100%;
     height: 100%;
-
-    .name {
+    display: flex;
+    .image {
+      display: block;
+      height: 61px;
+      width: 62px;
+    }
+    .content {
+      padding-left: 15px;
       width: 100%;
-      line-height: 31px;
-      height: 50%;
-      color: #666;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-    .name:hover {
-      text-decoration: none;
-    }
-    .name:nth-child(1) {
-      color: #333;
-      font-size: 16px;
+      height: 100%;
+
+      .name {
+        width: 100%;
+        line-height: 31px;
+        height: 50%;
+        color: #666;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .name:hover {
+        text-decoration: none;
+      }
+      .name:nth-child(1) {
+        color: #333;
+        font-size: 16px;
+      }
     }
   }
 `;

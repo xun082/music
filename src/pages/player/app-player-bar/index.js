@@ -64,7 +64,7 @@ export default memo(function JMAppPlayerBar() {
 
   // 默认歌曲
   useEffect(() => {
-    dispatch(getSongDetailAction(28940048));
+    dispatch(getSongDetailAction(1329750332));
   }, [dispatch]);
 
   // other handle

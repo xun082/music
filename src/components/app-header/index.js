@@ -13,7 +13,6 @@ import { changeIsVisible } from "@/components/theme-login/store";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { clearLoginState } from "../../utils/secret-key";
-// import { DownOutlined, SearchOutlined } from "@ant-design/icons";
 
 export default memo(function HYAppHeader() {
   // 页面代码
