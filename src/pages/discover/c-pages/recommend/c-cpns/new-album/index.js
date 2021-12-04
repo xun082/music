@@ -37,19 +37,20 @@ export default memo(function HYNewAlbum() {
             {[0, 1].map((item) => {
               return (
                 <div key={item} className="page">
-                  {newAlbums.slice(item * 5, (item + 1) * 5).map((item) => {
-                    return (
-                      <HYAlbumCover
-                        key={item.id}
-                        info={item}
-                        size={100}
-                        width={118}
-                        bgp="-570px"
-                        play={23}
-                        play_bgp="0 -110px"
-                      />
-                    );
-                  })}
+                  {newAlbums &&
+                    newAlbums.slice(item * 5, (item + 1) * 5).map((item) => {
+                      return (
+                        <HYAlbumCover
+                          key={item.id}
+                          info={item}
+                          size={100}
+                          width={118}
+                          bgp="-570px"
+                          play={23}
+                          play_bgp="0 -110px"
+                        />
+                      );
+                    })}
                 </div>
               );
             })}
