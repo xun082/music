@@ -10,7 +10,7 @@
 
 ### 推荐/新碟上架/榜单
 
-![](https://i1.hdslb.com/bfs/archive/50a8f03c9537b07604a6dd374b733255d194f350.jpg@672w_378h_1c.webp)
+![](https://ibb.co/RQ55ymJ)
 
 ## 技术栈
 
