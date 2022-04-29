@@ -35,7 +35,6 @@
 - `Node.js`：利用 `Express` 搭建的本地测试服务器
 - `axios`：用来请求后端 `API` 音乐数据
 - [NeteaseCloudMusicApi](https://binaryify.github.io/NeteaseCloudMusicApi/#/)：网易云音乐 `NodeJS` 版 `API`，提供音乐数据
-- 也可以使用已经部署到服务器上的网易云接口: http://123.57.176.198:3000/
 
 ## 构建项目
 
