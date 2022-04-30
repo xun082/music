@@ -7,7 +7,7 @@
 基于 `react` + `redux` + `react-router` + `styled-components` + `axios` + `ant design` + `react-redux` + `redux-thunk` `immutable` + `redux-immutable` + `react-transition-group` 等开发一款 PC 端「网易云音乐 PC」 Web 项目，UI 界面参考了 PC 版的网易云音乐、flex 布局。
 
 ## 界面和功能展示
-![输入图片说明](%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220430145752.png)
+![输入图片说明](https://ibb.co/wRgmwZG)
 
 ## 技术栈
 
