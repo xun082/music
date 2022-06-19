@@ -22,13 +22,9 @@ export default memo(function HYSongs() {
 
   useEffect(() => {
     dispatch(changeCurrentCategoryAction(albumName || cat));
-  }, [dispatch, cat, albumName]);
-
-  // hooks
-  useEffect(() => {
     dispatch(getCategory());
     dispatch(getSongList(0));
-  }, [dispatch]);
+  }, [dispatch, cat, albumName]);
 
   return (
     <SongsWrapper className="wrap-v2 wrap-back">

@@ -142,7 +142,6 @@ export const getPersonRecommendAction = (cookie) => {
 export const getDayRecommendAction = (cookie) => {
   return async (dispatch) => {
     await getDayRecommend(cookie).then((res) => {
-      console.log(res.data);
       const item = res && res.data && res.data.dailySongs;
       dispatch(changeDayRecommendAction(item));
     });

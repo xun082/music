@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-// import { useDispatch } from "react-redux";
 
 import { getSizeImage } from "@/utils/format-utils";
 import {
@@ -14,9 +13,10 @@ export default memo(function HYTopRanking(props) {
   // props and state
   const { info } = props;
 
-  const tracks = info && info.tracks;
-  const cover = info && info.coverImgUrl;
-  const name = info && info.name;
+  // const tracks = info && info.tracks;
+  const tracks = info?.tracks;
+  const cover = info?.coverImgUrl;
+  const name = info?.name;
 
   // redux hooks
   const dispatch = useDispatch();

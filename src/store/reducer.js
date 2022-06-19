@@ -13,6 +13,7 @@ import { reducer as playlistReducer } from "../pages/playList/store";
 import { reducer as albumDetailReducer } from "../pages/album-detail/store";
 import { reducer as anchorDetailReducer } from "../pages/anchor-detail/store";
 import { reducer as mvReducer } from "../pages/movie/store";
+import { reducer as otherUserReducer } from "@/pages/profile/user-home/store";
 const cReducer = combineReducers({
   recommend: recommendReducer,
   player: playerReducer,
@@ -27,6 +28,7 @@ const cReducer = combineReducers({
   albumDetail: albumDetailReducer,
   anchorDetail: anchorDetailReducer,
   mv: mvReducer,
+  otherUser: otherUserReducer,
 });
 
 export default cReducer;

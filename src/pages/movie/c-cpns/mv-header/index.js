@@ -5,7 +5,7 @@ import { useDispatch, shallowEqual, useSelector } from "react-redux";
 import { MvHeaderWrapper } from "./style";
 import { getMvInfoAction, getMvLinkAction } from "../../store/actionCreators";
 import { getQueryObject } from "@/utils/format-utils";
-import Player from "xgplayer";
+import ReactPlayer from "react-player";
 
 export default memo(function HYMvHeader() {
   const { mvInfo, mvLink } = useSelector(
@@ -16,49 +16,14 @@ export default memo(function HYMvHeader() {
     shallowEqual
   );
   const { id } = getQueryObject();
-  const {
-    name,
-    artistName,
-    artistId,
-    cover,
-    commentCount,
-    shareCount,
-    subCount,
-  } = mvInfo;
-
-  const { url } = mvLink;
+  const { name, artistName, artistId, commentCount, shareCount, subCount } =
+    mvInfo;
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMvInfoAction(id));
     dispatch(getMvLinkAction(id));
   }, [dispatch, id]);
-
-  // 视频
-  new Player({
-    id: "video",
-    url: url,
-    width: 640,
-    height: 360,
-    volume: 0.6,
-    poster: cover,
-    miniplayer: true,
-    miniplayerConfig: {
-      bottom: 200,
-      right: 0,
-      width: 340,
-      height: 200,
-    },
-    playbackRate: [0.5, 0.75, 1, 1.5, 2],
-    defaultPlaybackRate: 1,
-    keyShortcut: "on",
-    definitionActive: "hover",
-    keyShortcutStep: {
-      //设置调整步长
-      currentTime: 5, //播放进度调整步长，默认10秒
-      volume: 0.2, //音量调整步长，默认0.1
-    },
-  });
 
   return (
     <MvHeaderWrapper>
@@ -74,7 +39,13 @@ export default memo(function HYMvHeader() {
       </div>
       {/* 视频播放器 */}
       <div className="player">
-        <div id="video"></div>
+        <ReactPlayer
+          url={mvLink?.url}
+          playing={true}
+          controls={true}
+          muted={true}
+          loop={true}
+        />
       </div>
       <div className="control">
         <div className="like sprite_button">

@@ -21,7 +21,6 @@ export default memo(function ThemeSongCard(props) {
     shallowEqual
   );
 
-  console.log(info);
   const name = info.name;
   const time = info && info.dt;
   const album = info && info.al && info.al.name;

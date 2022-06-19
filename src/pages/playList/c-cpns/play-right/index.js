@@ -6,6 +6,7 @@ import { PlayRightWrapper } from "./style";
 import { getSizeImage } from "@/utils/format-utils";
 import { getSongList } from "@/pages/discover/c-pages/songs/store/actionCreators";
 import ThemePlayListRight from "@/components/theme-right-playlist";
+import { Link } from "react-router-dom";
 
 export default memo(function HYPlayRight() {
   const { playListLiked, playlists } = useSelector(
@@ -20,16 +21,22 @@ export default memo(function HYPlayRight() {
     dispatch(getSongList(0, 8));
   }, [dispatch]);
 
+  console.log(playListLiked);
+
   return (
     <PlayRightWrapper>
       <div className="header">喜欢这个歌单的人</div>
       <div className="avatar">
         {playListLiked &&
-          playListLiked.map((item, index) => {
+          playListLiked.map((item) => {
             return (
-              <div className="image" key={index}>
+              <Link
+                to={`/users/home?id=${item.userId}`}
+                className="image"
+                key={item.userId}
+              >
                 <img src={getSizeImage(item.avatarUrl, 40)} alt="" />
-              </div>
+              </Link>
             );
           })}
       </div>

@@ -111,8 +111,8 @@ export const ProfileWrapper = styled.div`
   .play-list {
     margin-top: 25px;
     .playlist {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       .hzuIGv {
         margin-bottom: 0;
         margin-right: 40px;

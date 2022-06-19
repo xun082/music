@@ -14,7 +14,6 @@ export default memo(function RankingHeader() {
     shallowEqual
   );
 
-  console.log(titleInfo);
   // other handle
   const picUrl = titleInfo && titleInfo.coverImgUrl;
   const name = titleInfo && titleInfo.name;

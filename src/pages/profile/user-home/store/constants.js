@@ -1,0 +1,2 @@
+export const CHANGE_OTHER_USER_INFO = "user/CHANGE_OTHER_USER_INFO_";
+export const CHANGE_USER_EVENT = "user/CHANGE_USER_EVENT";

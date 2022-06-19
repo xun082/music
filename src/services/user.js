@@ -61,3 +61,24 @@ export const getUserPlayListInfo = (id) => {
     },
   });
 };
+
+// 获取其他用户信息
+export const getOtherUserInfo = (uid) => {
+  return request({
+    url: "/user/detail",
+    params: {
+      uid,
+    },
+  });
+};
+
+// 获取用户动态
+export const getUserEvent = (uid, limit) => {
+  return request({
+    url: "/user/event",
+    params: {
+      uid,
+      limit,
+    },
+  });
+};

@@ -24,6 +24,11 @@ import HYAlbumDetail from "../pages/album-detail";
 import HYAnchorDetail from "../pages/anchor-detail";
 import HYSongDetail from "../pages/player";
 import HYMv from "../pages/movie";
+import UserHome from "../pages/profile/user-home";
+import Home from "@/pages/profile/user-home/c-cpns/home";
+import UserFans from "@/pages/profile/user-home/c-cpns/fans";
+import UserEvent from "@/pages/profile/user-home/c-cpns/event";
+import UserFollow from "@/pages/profile/user-home/c-cpns/follows";
 
 const routes = [
   {
@@ -88,7 +93,6 @@ const routes = [
         component: HYArtistDetail,
         routes: [
           {
-            // render: () => <Redirect to="/discover/artist/detail" />,
             path: "/discover/artist/detail",
             exact: true,
             component: HYArtistSong,
@@ -141,6 +145,32 @@ const routes = [
     path: "/user",
     exact: true,
     component: Profile,
+  },
+  {
+    path: "/users",
+    component: UserHome,
+    routes: [
+      {
+        path: "/users/home",
+        exact: true,
+        component: Home,
+      },
+      {
+        path: "/users/fans",
+        exact: true,
+        component: UserFans,
+      },
+      {
+        path: "/users/event",
+        exact: true,
+        component: UserEvent,
+      },
+      {
+        path: "/users/follow",
+        exact: true,
+        component: UserFollow,
+      },
+    ],
   },
 ];
 

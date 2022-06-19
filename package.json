@@ -12,12 +12,14 @@
     "axios": "^0.22.0",
     "crypto-js": "^4.1.1",
     "immutable": "^4.0.0-rc.15",
+    "jol-player": "^3.2.0",
     "js-md5": "^0.7.3",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-draggable": "^4.4.4",
+    "react-player": "^2.10.1",
     "react-redux": "^7.2.5",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.3.0",
@@ -26,10 +28,9 @@
     "redux": "^4.1.1",
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "sortablejs": "^1.14.0",
+    "sortablejs": "^1.14.0",  
     "styled-components": "^5.3.1",
-    "web-vitals": "^1.1.2",
-    "xgplayer": "^2.31.1"
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "craco start",

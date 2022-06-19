@@ -26,7 +26,6 @@ export default memo(function ThemeSongCard(props) {
   const singer = info && info.ar;
   const album = info && info.al && info.al.name;
   const albumId = info && info.al && info.al.id;
-  console.log(info.al);
   const id = info && info.id;
 
   const dispatch = useDispatch();

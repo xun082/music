@@ -22,6 +22,8 @@ export default memo(function HYArtistHeader() {
   useEffect(() => {
     dispatch(getArtistDetailAction(id));
   }, [dispatch, id]);
+
+  console.log(artistDetail);
   return (
     <ArtistHeaderWrapper>
       <div className="header">

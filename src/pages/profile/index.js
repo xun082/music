@@ -71,7 +71,6 @@ export default memo(function Profile(props) {
     dispatch(getUserDetailInfoAction(userId));
     dispatch(getUserPlayRecordAction(1, userId));
     getUserSongList(userId).then((res) => {
-      console.log(res);
       setPlaylist(res.playlist);
     });
   }, [userId, dispatch]);
@@ -106,7 +105,7 @@ export default memo(function Profile(props) {
 
   // template
   const renderDynamicList = () => {
-    return dynamic.map((item, index) => {
+    return dynamic.map((item) => {
       return (
         <div className="dynamic-item" key={item.name}>
           <strong className="count">{item.value}</strong>
