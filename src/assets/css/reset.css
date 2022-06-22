@@ -2,19 +2,41 @@
 @import "~antd/dist/antd.css";
 
 /* 样式的重置 */
-body, html, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, header, menu, section, p, input, td, th, ins {
+body,
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+header,
+menu,
+section,
+p,
+input,
+td,
+th,
+ins {
   padding: 0;
   color: #333;
   margin: 0;
 }
 
-
-ul, ol, li {
+ul,
+ol,
+li {
   list-style: none;
 }
 
 a {
-  text-decoration: none!important;
+  text-decoration: none !important;
   color: #666;
 }
 
@@ -23,11 +45,16 @@ a:hover {
   text-decoration: underline;
 }
 
-i, em {
+i,
+em {
   font-style: normal;
 }
 
-input, textarea, button, select, a {
+input,
+textarea,
+button,
+select,
+a {
   outline: none;
   border: none;
 }
@@ -43,7 +70,11 @@ img {
 }
 
 /* 全局样式 */
-body, textarea, select, input, button {
+body,
+textarea,
+select,
+input,
+button {
   font-size: 12px;
   color: #333;
   font-family: Arial, Helvetica, sans-serif;
@@ -66,7 +97,7 @@ body, textarea, select, input, button {
   margin: 0 auto;
 }
 
-.wrap-v3 {  
+.wrap-v3 {
   border: 1px solid #d3d3d3;
   border-right: none;
   padding: 40px 30px;
@@ -83,7 +114,7 @@ body, textarea, select, input, button {
   margin: 0 auto;
 }
 
-.wrap-back{
+.wrap-back {
   /* background: url('../img/wrap-bg.png') repeat-y; */
   background-color: #fff;
 }
@@ -100,11 +131,11 @@ body, textarea, select, input, button {
   background: url(../img/mask.png) no-repeat 0 9999px;
 }
 
-.anchor_icon{
+.anchor_icon {
   background: url(../img/radio_bg.png) no-repeat 0 9999px;
 }
 
-.ban_mask{
+.ban_mask {
   background: url(../img/ban_mask.png) no-repeat 0 9999px;
 }
 
@@ -144,6 +175,14 @@ body, textarea, select, input, button {
   background: url(../img/recmd_daily.jpg) no-repeat 0 9999px;
 }
 
+.latter_mask {
+  background: url(../img/latter_mask.png) 0 9999px;
+}
+
+.vip_image {
+  background: url(../img/vip.png) no-repeat 0 9999px;
+}
+
 .image_cover {
   position: absolute;
   left: 0;
@@ -158,7 +197,7 @@ body, textarea, select, input, button {
   background: url(../img/playbar_sprite.png) no-repeat 0 9999px;
 }
 
-.singer{
+.singer {
   background: url(../img/singer.png) no-repeat 0 9999px;
 }
 /* className="lyric-class" */
@@ -167,7 +206,7 @@ body, textarea, select, input, button {
   left: 50%;
   transform: translateX(-50%);
   bottom: 50px;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
 }
 
@@ -178,4 +217,3 @@ body, textarea, select, input, button {
 .not-login {
   background: url(../img/notlogin.jpg) no-repeat 0 9999px;
 }
-

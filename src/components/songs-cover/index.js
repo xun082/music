@@ -10,7 +10,7 @@ export default memo(function HYSongsCover(props) {
   const creator = info && info.creator && info.creator.nickname;
   const create = info.copywriter || creator;
   const id = info && info.id;
-  const playcount = info && info.playcount;
+  const playCount = info && info.playcount;
   return (
     <SongsCoverWrapper>
       <a rel="noopener noreferrer" href={`#/discover/playlist?id=${id}`}>
@@ -23,7 +23,7 @@ export default memo(function HYSongsCover(props) {
             <div className="info sprite_cover">
               <span>
                 <i className="sprite_icon erji"></i>
-                {getCount(info.playCount || playcount)}
+                {getCount(info.playCount || playCount)}
               </span>
               <i className="sprite_icon play"></i>
             </div>

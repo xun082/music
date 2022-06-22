@@ -7,7 +7,7 @@ import { CommentWrapper } from "./style";
 import { formatMonthDay, getSizeImage } from "@/utils/format-utils.js";
 import { changeIsVisible } from "@/components/theme-login/store/index";
 import { sendLikeComment } from "@/services/comment";
-import { getRoute } from "@/utils/format-utils.js";
+import { getQueryObject } from "@/utils/format-utils.js";
 
 export default memo(function CommentCard(props) {
   const [flag, setFlag] = useState(false);
@@ -40,14 +40,14 @@ export default memo(function CommentCard(props) {
     if (!flag) {
       liked = !liked;
       likedCount += 1;
-      sendLikeComment(getRoute(), id, 1, 2, cookie).then((res) => {
+      sendLikeComment(getQueryObject(), id, 1, 2, cookie).then((res) => {
         if (res.code === 200) message.success("点赞成功");
       });
     } else {
       liked = !liked;
       likedCount -= 1;
       setFlag(true);
-      sendLikeComment(getRoute(), id, 0, 2, cookie).then((res) => {
+      sendLikeComment(getQueryObject(), id, 0, 2, cookie).then((res) => {
         if (res.code === 200) message.success("已取消点赞");
       });
     }

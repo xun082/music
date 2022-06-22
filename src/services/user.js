@@ -63,11 +63,12 @@ export const getUserPlayListInfo = (id) => {
 };
 
 // 获取其他用户信息
-export const getOtherUserInfo = (uid) => {
+export const getOtherUserInfo = (uid, cookie) => {
   return request({
     url: "/user/detail",
     params: {
       uid,
+      cookie,
     },
   });
 };
@@ -82,3 +83,54 @@ export const getUserEvent = (uid, limit) => {
     },
   });
 };
+
+// 获取用户关注
+export const getUserFollow = (uid, limit, offset, cookie) => {
+  return request({
+    url: "/user/follows",
+    params: {
+      uid,
+      limit,
+      offset,
+      cookie,
+    },
+  });
+};
+
+// 获取用户粉丝
+export const getUserFans = (uid, limit, offset, cookie) => {
+  return request({
+    url: "/user/followeds",
+    params: {
+      uid,
+      limit,
+      offset,
+      cookie,
+    },
+  });
+};
+
+// 关注用户
+export function SendFollowUser(id, t, cookie) {
+  return request({
+    url: "/follow",
+    params: {
+      id,
+      t,
+      cookie,
+    },
+  });
+}
+
+// 发送私信
+export function getSendLatter(user_ids, msg, cookie) {
+  return request({
+    url: "/send/text",
+    // method: "get",
+    params: {
+      user_ids,
+      msg,
+      cookie,
+    },
+  });
+}

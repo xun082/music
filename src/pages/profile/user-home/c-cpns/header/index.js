@@ -6,18 +6,23 @@ import { getQueryObject } from "@/utils/format-utils";
 import { HeaderWrapper } from "./style";
 import { getSizeImage, getCity } from "@/utils/format-utils";
 import { Link } from "react-router-dom";
+import XXFollowButton from "@/components/follow-button";
+import XXEmailButton from "@/components/email-button";
+import { SendFollowUser } from "@/services/user";
+import { message } from "antd";
 
 const UserHeader = memo(() => {
-  const { userInfo } = useSelector((state) => ({
+  const { userInfo, cookie } = useSelector((state) => ({
     userInfo: state.getIn(["otherUser", "userInfo"]),
+    cookie: state.getIn(["loginState", "cookie"]),
     shallowEqual,
   }));
   const { id } = getQueryObject();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getOtherUser(id));
-  }, [dispatch, id]);
+    dispatch(getOtherUser(id, cookie));
+  }, [dispatch, id, cookie]);
 
   const { profile, level } = userInfo;
   const nickname = profile?.nickname;
@@ -30,27 +35,52 @@ const UserHeader = memo(() => {
   const eventCount = profile?.eventCount;
   const signature = profile?.signature;
   const province = profile?.province;
+  const followed = profile?.followed;
 
+  const cancelFollow = () => {
+    SendFollowUser(id, 0, cookie).then((res) => {
+      message.success({
+        content: "取消关注成功",
+        duration: 1,
+      });
+    });
+  };
   return (
-    <HeaderWrapper>
+    <HeaderWrapper gender={gender}>
       <img src={getSizeImage(avatarUrl, 188)} alt="" />
       <div className="content">
         <div className="header">
           <div className="name">{nickname}</div>
-          <div className="level">Lv:{level}</div>
-          <div className="gender">{gender === 1 ? "男" : "女"}</div>
-          <div className="button">发私信</div>
-          <div className="button">关注</div>
+          <div className="vip vip_image"></div>
+          <div className="level sprite_icon3">{level}</div>
+          <div className="gender sprite_icon2"></div>
+          <div className="email">
+            <XXEmailButton id={id} isShow="none" />
+          </div>
+          <div className="follow">
+            {followed === false ? (
+              <XXFollowButton id={id} />
+            ) : (
+              <div
+                className="cancel sprite_button2"
+                onClick={() => {
+                  cancelFollow();
+                }}
+              >
+                已关注
+              </div>
+            )}
+          </div>
         </div>
         <div className="count">
           <Link className="link" to={`/users/event?id=${id}`}>
-            {eventCount}动态
+            {eventCount} 动态
           </Link>
           <Link className="link" to={`/users/follow?id=${id}`}>
-            {follows}关注
+            {follows} 关注
           </Link>
           <Link className="link" to={`/users/fans?id=${id}`}>
-            {followeds}粉丝
+            {followeds} 粉丝
           </Link>
         </div>
         <div className="signature">个人介绍: {signature}</div>

@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
 import { RadioCardWrapper } from "./style";
-import { getSizeImage, getRoute } from "@/utils/format-utils";
+import { getSizeImage, getQueryObject } from "@/utils/format-utils";
 
 export default memo(function ThemeAnchorCard(props) {
   const { info } = props;
@@ -13,7 +13,7 @@ export default memo(function ThemeAnchorCard(props) {
   const programCount = info && info.programCount;
   const subCount = info && info.subCount;
 
-  const isNumber = parseInt(getRoute());
+  const isNumber = parseInt(getQueryObject());
 
   return (
     <RadioCardWrapper>

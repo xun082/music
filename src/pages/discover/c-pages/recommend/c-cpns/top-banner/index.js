@@ -35,9 +35,7 @@ export default memo(function HYTopBanner() {
       setCurrentIndex(to);
     }, 0);
   }, []);
-  const bgImage =
-    topBanners[currentIndex] &&
-    topBanners[currentIndex].imageUrl + "?imageView&blur=40x20";
+  const bgImage = topBanners[currentIndex]?.imageUrl + "?imageView&blur=40x20";
 
   return (
     <BannerWrapper bgImage={bgImage}>

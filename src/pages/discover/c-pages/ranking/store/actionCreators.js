@@ -126,7 +126,6 @@ export const getRanKingNewCommentAction = (id, limit = 20, offset) => {
   return (dispatch) => {
     getTopListNewComment(id, limit, offset).then((res) => {
       const comment = res && res.comments;
-
       const total = res && res.total;
       dispatch(changeRankingNewComment(comment));
       dispatch(changeRankingTotal(total));

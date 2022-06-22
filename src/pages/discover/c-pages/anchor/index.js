@@ -8,7 +8,7 @@ import AnchorLeft from "./c-cpns/anchor-left";
 import AnchorRight from "./c-cpns/anchor-right";
 import AnchorRadio from "./c-cpns/anchor-radio";
 import CategoryAnchor from "./c-cpns/anchor-category";
-import { getRoute } from "@/utils/format-utils.js";
+import { getQueryObject } from "@/utils/format-utils.js";
 
 export default memo(function HYAnchor() {
   const {
@@ -29,7 +29,7 @@ export default memo(function HYAnchor() {
   );
   const dispatch = useDispatch();
 
-  const isNumber = parseInt(getRoute());
+  const isNumber = parseInt(getQueryObject());
 
   useEffect(() => {
     dispatch(getAnchorCategoryAction(2));

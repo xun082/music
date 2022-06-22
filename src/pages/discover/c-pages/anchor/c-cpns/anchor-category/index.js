@@ -12,7 +12,7 @@ import ThemeHeaderRcm from "@/components/theme-header-rcm";
 import ThemeAnchorExcellent from "@/components/theme-anchor-excellent";
 import ThemeAnchorCard from "@/components/theme-anchor-card";
 import HYPagination from "@/components/pagination/index";
-import { getRoute } from "@/utils/format-utils.js";
+import { getQueryObject } from "@/utils/format-utils.js";
 
 function CategoryAnchor() {
   const { anchorExcellent, categoryRanking, anchorTotal, currentPage } =
@@ -29,8 +29,8 @@ function CategoryAnchor() {
   const dispatch = useDispatch();
   const targePageCount = (currentPage - 1) * 20;
   useEffect(() => {
-    dispatch(getExcellentAnchorAction(getRoute()));
-    dispatch(getBannerCategoryAction(22, targePageCount, getRoute()));
+    dispatch(getExcellentAnchorAction(getQueryObject()));
+    dispatch(getBannerCategoryAction(22, targePageCount, getQueryObject()));
   }, [dispatch, targePageCount]);
 
   // 翻页

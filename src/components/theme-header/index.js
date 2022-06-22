@@ -1,18 +1,18 @@
-import React, { memo } from 'react'
-import propTypes from 'prop-types'
-import { RcmHeaderLeft,  RcmHeaderWrapper } from './style'
-import { shallowEqual, useSelector } from 'react-redux'
+import React, { memo } from "react";
+import propTypes from "prop-types";
+import { RcmHeaderLeft, RcmHeaderWrapper } from "./style";
+import { shallowEqual, useSelector } from "react-redux";
 
 const ThemeHeaderRmc = function ThemeHeaderRmc(props) {
-  const { title } = props
+  const { title } = props;
 
   // redux
   const { commentTotal } = useSelector(
-    state => ({
-      commentTotal: state.getIn(['player', 'currentCommentTotal'])
+    (state) => ({
+      commentTotal: state.getIn(["player", "currentCommentTotal"]),
     }),
     shallowEqual
-  )
+  );
 
   return (
     <RcmHeaderWrapper>
@@ -25,16 +25,16 @@ const ThemeHeaderRmc = function ThemeHeaderRmc(props) {
         {commentTotal && <span>共{commentTotal}条评论</span>}
       </RcmHeaderLeft>
     </RcmHeaderWrapper>
-  )
-}
+  );
+};
 
 ThemeHeaderRmc.propTypes = {
   // title属性必填
   title: propTypes.string.isRequired,
-}
+};
 
-ThemeHeaderRmc.defaultProps  = {
-  keywords: []
-}
+ThemeHeaderRmc.defaultProps = {
+  keywords: [],
+};
 
-export default memo(ThemeHeaderRmc)
+export default memo(ThemeHeaderRmc);

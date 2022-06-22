@@ -9,7 +9,6 @@ import {
   getExcellentAnchorAction,
   getBannerCategoryAction,
 } from "../../store/actionCreators";
-import { getRoute } from "@/utils/format-utils.js";
 import { getQueryObject } from "@/utils/format-utils";
 import { NavLink } from "react-router-dom";
 
@@ -36,8 +35,8 @@ export default memo(function AnchorBanner() {
       if (id !== currentIndex) {
         setCurrentIndex(id);
       }
-      dispatch(getExcellentAnchorAction(getRoute()));
-      dispatch(getBannerCategoryAction(22, targePageCount, getRoute()));
+      dispatch(getExcellentAnchorAction(getQueryObject()));
+      dispatch(getBannerCategoryAction(22, targePageCount, getQueryObject()));
     },
     [currentIndex, dispatch, targePageCount]
   );

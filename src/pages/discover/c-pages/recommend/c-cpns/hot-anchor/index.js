@@ -21,8 +21,6 @@ export default memo(function HYHotAnchor() {
     dispatch(getHotAnchorAction(5));
   }, [dispatch]);
 
-  console.log(hotAnchors);
-
   return (
     <HotAnchor>
       <HYThemeRightRcm title="热门主播"></HYThemeRightRcm>

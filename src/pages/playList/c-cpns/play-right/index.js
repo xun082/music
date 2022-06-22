@@ -21,8 +21,6 @@ export default memo(function HYPlayRight() {
     dispatch(getSongList(0, 8));
   }, [dispatch]);
 
-  console.log(playListLiked);
-
   return (
     <PlayRightWrapper>
       <div className="header">喜欢这个歌单的人</div>

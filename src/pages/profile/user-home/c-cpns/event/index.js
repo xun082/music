@@ -19,7 +19,6 @@ const UserEvent = memo(() => {
   );
   const size = UserEvent?.size;
   const events = UserEvent?.events;
-  console.log(events);
 
   useEffect(() => {
     dispatch(getUserEventList(id));
@@ -40,8 +39,7 @@ const UserEvent = memo(() => {
               <div className="event" key={item.id}>
                 <XXUserAvatar user={item.user} time={item.eventTime} />
                 <div className="content">
-                        <div className="title">{JSON.parse(item.json).msg}</div>
-                        
+                  <div className="title">{JSON.parse(item.json).msg}</div>
                 </div>
               </div>
             );

@@ -43,7 +43,6 @@ function ThemeLogin() {
   };
   // 拖拽
   const onStart = (event, uiData) => {
-    console.log("---->拖拽");
     const { clientWidth, clientHeight } = window?.document?.documentElement;
     const targetRect = draggleRef?.current?.getBoundingClientRect();
     setBounds({
