@@ -1,31 +1,31 @@
-import request from './request'
+import request from "./request";
 
 // 获取歌单列表
-export function getSongList(limit,offset=0) {
+export function getSongList(limit, offset = 0) {
   return request({
-    url:'/top/playlist',
+    url: "/top/playlist",
     params: {
       limit,
-      offset
-    }
-  })
+      offset,
+    },
+  });
 }
 
 export function getSongCategory() {
   return request({
-    url: "/playlist/catlist"
-  })
+    url: "/playlist/catlist",
+  });
 }
 
-export function getSongCategoryList(cat="全部", offset=0, limit = 35) {
+export function getSongCategoryList(cat = "全部", offset = 0, limit = 35) {
   return request({
     url: "/top/playlist",
     params: {
       cat,
       limit,
-      offset
-    }
-  })
+      offset,
+    },
+  });
 }
 
 // 点赞
@@ -39,30 +39,43 @@ export function sendLikeComment(id, cid, t, cookie) {
       cid,
       t,
       type: 0,
-      cookie
-    }
-  })
+      cookie,
+    },
+  });
 }
 
 /* 收藏歌单, 传递歌单id */
-export function sendCollectSonglist(id, cookie) {
+export function sendCollectSongList(t, id, cookie) {
   return request({
     url: "/playlist/subscribe",
     params: {
-      t: 1,
+      t,
       id,
-      cookie
-    }
-  })
+      cookie,
+    },
+  });
 }
-
 
 // 歌曲详情网络请求
 export function getSongDetailData(id) {
   return request({
-    url: '/playlist/detail',
+    url: "/playlist/detail",
     params: {
-      id
-    }
-  })
+      id,
+    },
+  });
+}
+
+// 对歌单添加或删除歌曲
+export function SendAddSongList(op, pid, tracks, cookie) {
+  return request({
+    url: "/playlist/tracks",
+    method: "post",
+    params: {
+      op,
+      pid,
+      tracks,
+      cookie,
+    },
+  });
 }

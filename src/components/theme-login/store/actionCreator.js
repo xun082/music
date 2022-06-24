@@ -90,9 +90,9 @@ export const getUserDetailInfoAction = (id) => {
 };
 
 // 获取播放记录
-export const getUserPlayRecordAction = (type, uid) => {
+export const getUserPlayRecordAction = (type = 0, uid) => {
   return (dispatch) => {
-    getUserRecordInfo(1, uid).then((res) => {
+    getUserRecordInfo(type, uid).then((res) => {
       dispatch(changeUserPlayRecord(res.weekData));
     });
   };

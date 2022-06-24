@@ -9,6 +9,7 @@ import store from "./store";
 import HYAppHeader from "@/components/app-header";
 import HYAppFooter from "@/components/app-footer";
 import HYappPlayerBar from "./pages/player/app-player-bar";
+import XXSongListModel from "./components/draggable-song-list";
 
 export default memo(function App() {
   return (
@@ -16,6 +17,7 @@ export default memo(function App() {
       <HashRouter>
         <HYAppHeader />
         {renderRoutes(routes)}
+        <XXSongListModel />
         <HYAppFooter />
         <HYappPlayerBar />
       </HashRouter>

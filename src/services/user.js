@@ -1,11 +1,13 @@
 import request from "./request";
+
 // 获取用户歌单
-export const getUserSongList = (userId) => {
+export const getUserSongList = (uid, limit, cookie) => {
   return request({
     url: "/user/playlist",
     params: {
-      uid: userId,
-      timestamp: new Date().getTime(),
+      uid,
+      limit,
+      cookie,
     },
   });
 };

@@ -29,6 +29,7 @@ import Home from "@/pages/profile/user-home/c-cpns/home";
 import UserFans from "@/pages/profile/user-home/c-cpns/fans";
 import UserEvent from "@/pages/profile/user-home/c-cpns/event";
 import UserFollow from "@/pages/profile/user-home/c-cpns/follows";
+import SongRanking from "@/pages/profile/user-home/c-cpns/ranking";
 
 const routes = [
   {
@@ -171,6 +172,11 @@ const routes = [
         component: UserFollow,
       },
     ],
+  },
+  {
+    path: "/user/songs/rank",
+    exact: true,
+    component: SongRanking,
   },
 ];
 

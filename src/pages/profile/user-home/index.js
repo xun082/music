@@ -14,7 +14,6 @@ const UserHome = memo((props) => {
     <UserWrapper className="wrap-v2">
       <UserHeader />
       {renderRoutes(route.routes)}
-
       <LatterDraggable />
     </UserWrapper>
   );

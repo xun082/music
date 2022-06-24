@@ -6,12 +6,12 @@ import {
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ThemeRecommendRcm from "@/components/theme-header-rcm";
-import Authentication from "../../components/Authentication";
+import Authentication from "@/components/Authentication";
 import SongCover from "@/components/songs-cover";
 import RecordCard from "@/components/record-card";
 import { getUserSongList, setCreateUserSongList } from "@/services/user";
-import { changeIsVisible } from "../../components/theme-login/store/actionCreator";
-import { getCity, getSizeImage } from "../../utils/format-utils";
+import { changeIsVisible } from "@/components/theme-login/store/actionCreator";
+import { getCity, getSizeImage } from "@/utils/format-utils";
 import { ProfileWrapper } from "./style";
 import Modal from "antd/lib/modal/Modal";
 import { Input, message } from "antd";
@@ -19,7 +19,7 @@ import { Input, message } from "antd";
 import {
   getUserDetailInfoAction,
   getUserPlayRecordAction,
-} from "../../components/theme-login/store/actionCreator";
+} from "@/components/theme-login/store/actionCreator";
 
 export default memo(function Profile(props) {
   // props/state
@@ -70,10 +70,10 @@ export default memo(function Profile(props) {
   useEffect(() => {
     dispatch(getUserDetailInfoAction(userId));
     dispatch(getUserPlayRecordAction(1, userId));
-    getUserSongList(userId).then((res) => {
+    getUserSongList(userId, 30, 0, cookie).then((res) => {
       setPlaylist(res.playlist);
     });
-  }, [userId, dispatch]);
+  }, [userId, dispatch, cookie]);
   // handle
   const toRedirect = useCallback(() => {
     props.history.push("/");

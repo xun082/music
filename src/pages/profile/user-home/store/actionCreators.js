@@ -5,6 +5,8 @@ import {
   getUserEvent,
   getUserFollow,
   getUserFans,
+  getUserRecordInfo,
+  getUserSongList,
 } from "@/services/user";
 
 // 获取其他用户信息
@@ -49,10 +51,28 @@ const changeUserFansCurrentPage = (res) => ({
   fansCurrentPage: res,
 });
 
+// 获取用户播放记录(uid)
+const changeUserPlayRecord = (res) => ({
+  type: actionTypes.CHANGE_USER_PLAY_RECORD,
+  playHistory: res,
+});
+
+// 获取用户歌单
+const changeUserSongList = (res) => ({
+  type: actionTypes.CHANGE_USER_SONG_LIST,
+  songList: res,
+});
+
 // 更改发送信息框显示
 export const changeLatterIsVisible = (res) => ({
   type: actionTypes.CHANGE_VISIBLE_STATE,
   isVisible: res,
+});
+
+// 更改发送信息框显示
+export const changeAddSongList = (res) => ({
+  type: actionTypes.CHANGE_ADD_SONG_LIST,
+  addSongListModel: res,
 });
 
 // 获取其他用户信息
@@ -118,6 +138,24 @@ export const getLoginUserFollows = (uid, limit, offset, cookie) => {
     getUserFollow(uid, limit, offset, cookie).then((res) => {
       const result = res?.follow;
       dispatch(changeLogonUserFollows(result));
+    });
+  };
+};
+
+// 获取播放记录
+export const getUserPlayHistoryAction = (type = 0, uid) => {
+  return (dispatch) => {
+    getUserRecordInfo(type, uid).then((res) => {
+      dispatch(changeUserPlayRecord(res?.allData));
+    });
+  };
+};
+
+// 获取播放记录
+export const getUserSongListAction = (uid, limit, cookie) => {
+  return (dispatch) => {
+    getUserSongList(uid, limit, cookie).then((res) => {
+      dispatch(changeUserSongList(res?.playlist));
     });
   };
 };
