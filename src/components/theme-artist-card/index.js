@@ -5,10 +5,10 @@ import { getSizeImage } from "@/utils/format-utils";
 
 export default memo(function ThemeArtistCard(props) {
   const { info } = props;
-
-  const name = info && info.name;
-  const picUrl = info && info.img1v1Url;
-  const id = info && info.id;
+  console.log(info);
+  const name = info?.name;
+  const picUrl = info?.img1v1Url || info?.picUrl;
+  const id = info?.id;
   return (
     <ArtistCardWrapper>
       <a rel="noopener noreferrer" href={`#/discover/artist/detail?id=${id}`}>

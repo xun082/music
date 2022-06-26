@@ -116,6 +116,51 @@ export const artistMenu = [
   },
 ];
 
+// 搜索分类
+export const searchCategory = [
+  {
+    title: "单曲",
+    id: 0,
+    type: 1,
+  },
+  {
+    title: "专辑",
+    id: 1,
+    type: 10,
+  },
+
+  {
+    title: "歌手",
+    id: 2,
+    type: 100,
+  },
+  {
+    title: "歌单",
+    id: 3,
+    type: 1000,
+  },
+  {
+    title: "用户",
+    id: 4,
+    type: 1002,
+  },
+  {
+    title: "歌词",
+    id: 5,
+    type: 1006,
+  },
+  {
+    title: "电台",
+    id: 6,
+    type: 1009,
+  },
+  {
+    title: "视频",
+    id: 7,
+    type: 1014,
+  },
+];
+
 // 热门主播
 export const hotRadios = [
   {

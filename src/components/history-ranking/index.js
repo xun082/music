@@ -33,7 +33,7 @@ const XXHistoryPlay = memo((props) => {
           onClick={() => playMusic(songId)}
         ></div>
         <a
-          className="link song_list text-nowrap"
+          className="link text-nowrap"
           rel="noopener noreferrer"
           href={`#/discover/playlist?id=${id}`}
         >

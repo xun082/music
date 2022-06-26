@@ -128,10 +128,20 @@ export function SendFollowUser(id, t, cookie) {
 export function getSendLatter(user_ids, msg, cookie) {
   return request({
     url: "/send/text",
-    // method: "get",
     params: {
       user_ids,
       msg,
+      cookie,
+    },
+  });
+}
+
+// 发送私信
+export function SendSignIn(type, cookie) {
+  return request({
+    url: "/daily_signin",
+    params: {
+      type,
       cookie,
     },
   });

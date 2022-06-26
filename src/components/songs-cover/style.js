@@ -1,14 +1,9 @@
 import styled from "styled-components";
 
-export const SongsCoverWrapper = styled.div`
+export const SongsCoverWrapper = styled.a`
   width: 140px;
-  margin: 20px ${(props) => props.right || 0} 20px 0;
-  a {
-    text-decoration: none;
-  }
   .cover-top {
     position: relative;
-
     & > img {
       width: 140px;
       height: 140px;
@@ -21,7 +16,6 @@ export const SongsCoverWrapper = styled.div`
       width: 100%;
       height: 100%;
       background-position: 0 0;
-
       .info {
         display: flex;
         justify-content: space-between;
@@ -34,7 +28,6 @@ export const SongsCoverWrapper = styled.div`
         background-position: 0 -537px;
         color: #ccc;
         height: 27px;
-
         .erji {
           margin-right: 5px;
           display: inline-block;
@@ -58,7 +51,6 @@ export const SongsCoverWrapper = styled.div`
     color: #000;
     margin-top: 5px;
   }
-
   .cover-source {
     color: #666;
   }

@@ -2,14 +2,30 @@ import React, { memo } from "react";
 
 import { HeaderControlWrapper } from "./style";
 import { formatMinuteSecond } from "@/utils/format-utils";
+import { useDispatch } from "react-redux";
+import {
+  getSongDetailAction,
+  changeFirstLoad,
+} from "@/pages/player/store/actionCreators";
+// ThemeHeaderControl
+const ThemeHeaderControl = memo((props) => {
+  console.log(props);
+  const { comment, share, collect, duration, likedCount, id } = props;
 
-export default memo(function ThemeHeaderControl(props) {
-  const { comment, share, collect, duration, likedCount } = props;
+  console.log(props);
+  const dispatch = useDispatch();
+  const playMusic = () => {
+    // 派发action 歌曲详情
+    dispatch(getSongDetailAction(id));
+    // 不是首次加载,播放音乐
+    dispatch(changeFirstLoad(false));
+  };
+
   return (
     <HeaderControlWrapper>
       <div className="controls">
         {duration === undefined ? (
-          <div className="sprite_button play">
+          <div onClick={() => playMusic(id)} className="sprite_button play">
             <i className="sprite_button inner">
               <em className="sprite_button play-icon"></em>
               播放
@@ -57,3 +73,4 @@ export default memo(function ThemeHeaderControl(props) {
     </HeaderControlWrapper>
   );
 });
+export default ThemeHeaderControl;

@@ -3,7 +3,7 @@ import { shallowEqual, useSelector, useDispatch } from "react-redux";
 
 import { headerLinks } from "@/common/local-data";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { SearchOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import { HeaderWrapper, HeaderLeft, HeaderRight } from "./style";
@@ -90,11 +90,13 @@ export default memo(function HYAppHeader() {
           </div>
         </HeaderLeft>
         <HeaderRight>
-          <Input
-            className="search"
-            placeholder="音乐/视频/电台/用户"
-            prefix={<SearchOutlined />}
-          />
+          <Link to={"/search?type=1"}>
+            <Input
+              className="search"
+              placeholder="音乐/视频/电台/用户"
+              prefix={<SearchOutlined />}
+            />
+          </Link>
           <div className="center">创作者中心</div>
           <Dropdown placement="bottomCenter" overlay={profileDownMenu} arrow>
             <div

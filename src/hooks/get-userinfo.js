@@ -9,9 +9,7 @@ export function useGetUserinfo() {
 
   if (localStorage.getItem("loginInfo") != null) {
     const { username, password } = getLoginInfo("loginInfo");
-    username && password
-      ? dispatch(getLoginProfileInfo(username, password))
-      : console.log("当前登录的默认信息");
+    if (username && password) dispatch(getLoginProfileInfo(username, password));
   }
   // 不存在登录信息
   else {

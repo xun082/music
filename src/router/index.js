@@ -30,6 +30,7 @@ import UserFans from "@/pages/profile/user-home/c-cpns/fans";
 import UserEvent from "@/pages/profile/user-home/c-cpns/event";
 import UserFollow from "@/pages/profile/user-home/c-cpns/follows";
 import SongRanking from "@/pages/profile/user-home/c-cpns/ranking";
+import XXSearch from "@/pages/search";
 
 const routes = [
   {
@@ -137,6 +138,10 @@ const routes = [
   {
     path: "/mine",
     component: HYMine,
+  },
+  {
+    path: "/search",
+    component: XXSearch,
   },
   {
     path: "/friend",

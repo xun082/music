@@ -4,17 +4,25 @@ import { changeIsVisible } from "@/components/theme-login/store";
 import { useDispatch, useSelector } from "react-redux";
 import { RecommendWrapper, RecommendDocker, Recommend } from "./style";
 import { getSizeImage } from "@/utils/format-utils.js";
+import { SendSignIn } from "@/services/user";
 
 export default memo(function HYUserLogin() {
   // redux
   const dispatch = useDispatch();
 
-  const { isLogin, profile } = useSelector((state) => ({
+  const { isLogin, profile, cookie } = useSelector((state) => ({
     isLogin: state.getIn(["loginState", "isLogin"]),
     profile: state.getIn(["loginState", "profile"]),
+    cookie: state.getIn(["loginState", "cookie"]),
   }));
   const handleLogin = () => {
     if (!isLogin) dispatch(changeIsVisible(true));
+  };
+
+  const signIn = () => {
+    SendSignIn(1, cookie).then((res) => {
+      console.log(res);
+    });
   };
 
   // other handle
@@ -29,7 +37,9 @@ export default memo(function HYUserLogin() {
               <div className="info_right">
                 <div className="name">{profile.nickname}</div>
                 <div className="level">LV:{profile.authStatus}</div>
-                <div className="register">签到</div>
+                <div className="register" onClick={() => signIn()}>
+                  签到
+                </div>
               </div>
             </div>
             <div className="bottom">

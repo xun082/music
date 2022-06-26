@@ -21,6 +21,8 @@ export default memo(function HYSongHeader() {
   );
 
   const { name, mv, al, ar } = songInfo;
+
+  const songId = songInfo?.id;
   const albumName = al && al.name;
   const picUrl = al && al.picUrl;
 
@@ -57,7 +59,7 @@ export default memo(function HYSongHeader() {
           <a href="#/">{albumName}</a>
         </div>
         <div className="control">
-          <ThemeHeaderControl comment={commentTotal} />
+          <ThemeHeaderControl comment={commentTotal} id={songId} />
         </div>
         <div className="lyric">
           {songLyric &&

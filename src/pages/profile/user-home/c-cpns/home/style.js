@@ -10,4 +10,12 @@ export const HomeWrapper = styled.div`
     width: 100%;
     color: #666;
   }
+
+  .song_card {
+    padding-top: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 30px;
+  }
 `;

@@ -51,6 +51,7 @@ const changeSimilarMv = (res) => ({
 export const getMvInfoAction = (mvid) => {
   return (dispatch) => {
     getMvDetail(mvid).then((res) => {
+      console.log(res);
       const {
         commentCount,
         name,
@@ -62,7 +63,7 @@ export const getMvInfoAction = (mvid) => {
         publishTime,
         shareCount,
         subCount,
-      } = res && res.data;
+      } = res?.data;
       const item = {
         name,
         commentCount,

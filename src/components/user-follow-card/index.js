@@ -23,7 +23,9 @@ const XXUserFollow = memo((props) => {
       <img src={getSizeImage(avatarUrl, 60)} alt="" />
       <div className="info">
         <div className="name">
-          <span className="nickname">{nickname}</span>
+          <Link to={`/users/home?id=${id}`} className="nickname">
+            {nickname}
+          </Link>
           <span className="gender sprite_icon2"></span>
         </div>
         <div className="count">
