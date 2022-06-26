@@ -7,6 +7,7 @@
 基于 `react` + `redux` + `react-router` + `styled-components` + `axios` + `ant design` + `react-redux` + `redux-thunk` `immutable` + `redux-immutable` + `react-transition-group` 等开发一款 PC 端「网易云音乐 PC」 Web 项目，UI 界面参考了 PC 版的网易云音乐、flex 布局。
 
 ## 界面和功能展示
+
 ![输入图片说明](https://s1.ax1x.com/2022/04/30/OSke0S.png)
 ![输入图片说明](https://s1.ax1x.com/2022/04/30/OSkLNQ.png)
 ![输入图片说明](https://s1.ax1x.com/2022/04/30/OSkOhj.png)
@@ -41,7 +42,11 @@
 
 ## 构建项目
 
-- 克隆代码到本地之后，需要运行 NeteaseCloudMusicApi，来起一个音乐的 API 接口。(**可选)**
+- 克隆代码到本地之后，需要再克隆网易云音乐 `NodeJS` 版 `API`，
+- 服务器启动默认端口为 3000, 若不想使用 3000 端口 , 可使用以下命令 : Mac/Linux
+- $ PORT=4000 node app.js
+- windows 下使用 git-bash 或者 cmder 等终端执行以下命令 :
+- $ set PORT=4000 && node app.js
 - 如果需要在服务器上搭建的话就需要将 API 放到自己的服务器上面。(**可选)**
 
 ```powershell

@@ -31,6 +31,7 @@ import UserEvent from "@/pages/profile/user-home/c-cpns/event";
 import UserFollow from "@/pages/profile/user-home/c-cpns/follows";
 import SongRanking from "@/pages/profile/user-home/c-cpns/ranking";
 import XXSearch from "@/pages/search";
+import UserUpdate from "@/pages/profile/update";
 
 const routes = [
   {
@@ -151,6 +152,11 @@ const routes = [
     path: "/user",
     exact: true,
     component: Profile,
+  },
+  {
+    path: "/user/update",
+    exact: true,
+    component: UserUpdate,
   },
   {
     path: "/users",
