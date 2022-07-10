@@ -70,7 +70,6 @@ export function getSongDetailData(id) {
 export function SendAddSongList(op, pid, tracks, cookie) {
   return request({
     url: "/playlist/tracks",
-    method: "post",
     params: {
       op,
       pid,

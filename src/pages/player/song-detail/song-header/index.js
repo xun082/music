@@ -34,6 +34,8 @@ export default memo(function HYSongHeader() {
     dispatch(getSongLyricAction(id));
     dispatch(getSongInfoAction(id));
   }, [dispatch, id]);
+
+  console.log(songLyric);
   return (
     <SongHeaderWrapper>
       <div className="image sprite_cover">

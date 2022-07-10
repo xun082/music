@@ -27,13 +27,14 @@ const XXSongListModel = memo(() => {
 
   // 添加歌单 第二个参数是歌单id，第三个是歌曲id TODO
   const addSongList = (id) => {
-    SendAddSongList("add", 2496716268, 28940048, cookie).then((res) => {
+    SendAddSongList("add", 7502010153, 1498573844, cookie).then((res, rej) => {
+      console.log(rej);
       message.error({
         content: "接口错误???，操作无效",
       });
-      setTimeout(() => {
-        dispatch(changeAddSongList(false));
-      }, 500);
+      // setTimeout(() => {
+      //   dispatch(changeAddSongList(false));
+      // }, 500);
     });
   };
 

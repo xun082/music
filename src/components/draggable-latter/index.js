@@ -7,10 +7,13 @@ import { MehOutlined } from "@ant-design/icons";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { changeLatterIsVisible } from "@/pages/profile/user-home/store/actionCreators";
 import { getSendLatter } from "@/services/user";
+import { getSelectValue } from "@/utils/handle-data";
 
 const LatterDraggable = memo(() => {
   // 被选中的用户
   const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedValue] = useState([]);
+
   // 留言内容
   const [defaultValue, setDefaultValue] = useState("");
 
@@ -25,33 +28,36 @@ const LatterDraggable = memo(() => {
     shallowEqual
   );
 
-  // 数组过滤，还未完成，TODO
-  const newArray = loginUserFollow?.filter((item) => {
-    return selectedItems.every((list) => {
-      return item.userId !== list.userId;
-    });
-  });
+  getSelectValue(loginUserFollow, selectedItems, selectedValue);
+
   // 发送私信
   const sendLatter = () => {
     if (defaultValue.trim().length === 0 || selectedItems.length === 0) {
       message.error({
-        content: "内容和用发送私信的人不能为空",
+        content: "内容和要发送私信的人不能为空",
         duration: 1,
       });
     } else {
-      getSendLatter(selectedItems.join(","), defaultValue, cookie).then(
-        (res, rej) => {
-          dispatch(changeLatterIsVisible(false));
-          setDefaultValue("");
-          setSelectedItems([]);
-          message.success({
-            content: "发送成功",
-            duration: 1,
-          });
-        }
-      );
+      getSendLatter(
+        selectedValue
+          .map((item) => {
+            return item.userId;
+          })
+          .join(","),
+        defaultValue,
+        cookie
+      ).then((res, rej) => {
+        dispatch(changeLatterIsVisible(false));
+        setDefaultValue("");
+        setSelectedItems([]);
+        message.success({
+          content: "发送成功",
+          duration: 1,
+        });
+      });
     }
   };
+
   return (
     <Draggable handle=".drag-handler">
       <LatterWrapper isShow={isVisible}>
@@ -69,19 +75,23 @@ const LatterDraggable = memo(() => {
             bordered={false}
             mode="multiple"
             placeholder="选择或输入好友昵称"
-            value={selectedItems}
+            value={
+              selectedValue.map((index) => {
+                return index.nickname;
+              }) || undefined
+            }
             onChange={setSelectedItems}
             style={{
               width: "100%",
             }}
             className="select"
           >
-            {newArray &&
-              newArray.map((item) => (
+            {loginUserFollow &&
+              loginUserFollow.map((item) => (
                 <Select.Option
                   className="item"
                   key={item.userId}
-                  value={item.userId}
+                  value={item.nickname}
                 >
                   {item.nickname}
                 </Select.Option>

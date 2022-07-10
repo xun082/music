@@ -35,6 +35,7 @@ const XXSearch = memo((props) => {
   const onChange = (e) => {
     setIsShow(true);
     setSearchValue(e.target.value);
+
     //   发送网络请求，获取搜索建议
     getSearchSuggest(searchValue).then((res) => {
       const result = res?.result;

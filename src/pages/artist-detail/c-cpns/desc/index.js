@@ -14,7 +14,7 @@ export default memo(function HYArtistDesc() {
     }),
     shallowEqual
   );
-  
+
   const { id } = getQueryObject();
   const introduction = artistDesc && artistDesc.introduction;
   const dispatch = useDispatch();
@@ -22,6 +22,8 @@ export default memo(function HYArtistDesc() {
   useEffect(() => {
     dispatch(getArtistDescAction(id));
   }, [dispatch, id]);
+
+  console.log(introduction);
   return (
     <ArtistDescWrapper>
       <div className="content">
