@@ -4,7 +4,7 @@ import {
   WomanOutlined,
 } from "@ant-design/icons";
 import React, { memo, useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import ThemeRecommendRcm from "@/components/theme-header-rcm";
 import Authentication from "@/components/Authentication";
 import SongCover from "@/components/songs-cover";
@@ -37,7 +37,8 @@ export default memo(function Profile(props) {
       cookie: state.getIn(["loginState", "cookie"]),
       userDetail: state.getIn(["loginState", "userDetails"]),
       playRecord: state.getIn(["loginState", "playRecord"]),
-    })
+    }),
+    shallowEqual
   );
 
   // handle constant

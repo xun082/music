@@ -110,6 +110,7 @@ button {
 .wrap-v2 {
   width: 980px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .wrap-v3 {
@@ -137,6 +138,11 @@ button {
 .sprite_01 {
   background: url(../img/sprite_01.png) no-repeat 0 9999px;
 }
+
+.pip {
+  background: url(../img/pip.png) no-repeat 0 9999px;
+}
+
 
 .tab_icon {
   background: url(../img/tab.png) no-repeat 0 9999px;
@@ -210,6 +216,11 @@ button {
 
 .sprite_player {
   background: url(../img/playbar_sprite.png) no-repeat 0 9999px;
+}
+
+
+.frd_dyn_sprite {
+  background: url(../img/frd_dyn_sprite.png) no-repeat 0 9999px;
 }
 
 .singer {

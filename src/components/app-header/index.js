@@ -58,7 +58,12 @@ export default memo(function HYAppHeader() {
             我的主页
           </a>
         </Menu.Item>
-        <Menu.Item key="3" danger onClick={() => clearLoginState()}>
+        <Menu.Item key="3">
+          <a rel="noopener noreferrer" href="#/message/at">
+            我的消息
+          </a>
+        </Menu.Item>
+        <Menu.Item key="4" danger onClick={() => clearLoginState()}>
           退出登录
         </Menu.Item>
       </Menu>
@@ -90,7 +95,7 @@ export default memo(function HYAppHeader() {
           </div>
         </HeaderLeft>
         <HeaderRight>
-          <Link to={"/search?type=1"}>
+          <Link to={"/search/?type=1"}>
             <Input
               className="search"
               placeholder="音乐/视频/电台/用户"

@@ -32,6 +32,12 @@ import UserFollow from "@/pages/profile/user-home/c-cpns/follows";
 import SongRanking from "@/pages/profile/user-home/c-cpns/ranking";
 import XXSearch from "@/pages/search";
 import UserUpdate from "@/pages/profile/update";
+import Message from "@/pages/message";
+import MessageAt from "@/pages/message/c-cpns/at";
+import MessageComment from "@/pages/message/c-cpns/comment";
+import MessagePrivate from "@/pages/message/c-cpns/private";
+import MessageNotify from "@/pages/message/c-cpns/notify";
+import MessageDetail from "@/pages/message/c-cpns/private-detail";
 
 const routes = [
   {
@@ -139,6 +145,37 @@ const routes = [
   {
     path: "/mine",
     component: HYMine,
+  },
+  {
+    path: "/message",
+    component: Message,
+    routes: [
+      {
+        path: "/message/at",
+        exact: true,
+        component: MessageAt,
+      },
+      {
+        path: "/message/comment",
+        exact: true,
+        component: MessageComment,
+      },
+      {
+        path: "/message/private",
+        component: MessagePrivate,
+        exact: true,
+      },
+      {
+        path: "/message/private/detail",
+        exact: true,
+        component: MessageDetail,
+      },
+      {
+        path: "/message/notify",
+        exact: true,
+        component: MessageNotify,
+      },
+    ],
   },
   {
     path: "/search",

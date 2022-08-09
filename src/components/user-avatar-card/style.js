@@ -10,5 +10,8 @@ export const AvatarWrapper = styled.div`
       color: #0c73c2;
       font-size: 16px;
     }
+    .time {
+      color: #999;
+    }
   }
 `;

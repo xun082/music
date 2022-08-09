@@ -11,7 +11,6 @@ export const SearchWrapper = styled.div`
     justify-content: center;
   }
   .suggest {
-    display: ${(props) => (props.isVisible === false ? "none" : "block")};
     width: 400px;
     left: 50%;
     transform: translateX(-50%);
@@ -94,8 +93,10 @@ export const SearchWrapper = styled.div`
     }
   }
   .result {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
   }
 `;

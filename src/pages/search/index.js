@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback } from "react";
+import React, { memo, useState, useCallback, useEffect } from "react";
 
 import { SearchWrapper } from "./style";
 import { Input } from "antd";
@@ -12,29 +12,49 @@ import { getSearchResult } from "@/services/search";
 import HYAlbumCover from "@/components/album-cover";
 import ThemeArtistCard from "@/components/theme-artist-card";
 import XXVideoCard from "@/components/theme-video-card";
+import Users from "./components/users";
+import Single from "./components/single";
+import Lyric from "./components/lyric";
+import Anchor from "./components/anchor";
 
 const XXSearch = memo((props) => {
   useGetUserinfo();
-  const { type } = getQueryObject();
-  const [searchValue, setSearchValue] = useState("陈奕迅");
+  const { type, value } = getQueryObject();
+
+  // 搜索内容
+  const [searchValue, setSearchValue] = useState("");
+  // 搜索建议
   const [suggest, setSuggest] = useState("");
-  const [isShow, setIsShow] = useState(false);
+  const [searchSuggestIsShow, setSearchSuggestIsShow] = useState(false);
   const [currentClass, setCurrentClass] = useState(Number(type));
   const [count, setCount] = useState(0);
   const [searchResult, setSearchResult] = useState([]);
 
-  const onSearch = (value) => {
+  useEffect(() => {
+    if (value !== "") {
+      getSearchResult(value, 100, 0, type).then((res) => {
+        searchCategoriesResult(type, res);
+      });
+    }
+  }, [type, value]);
+
+  const onSearch = () => {
+    window.location.hash = `#/search/?type=${type}&value=${searchValue}`;
     //   默认搜索单曲
     getSearchResult(searchValue, 100, 0, type).then((res) => {
       setSearchResult(res?.result?.songs);
       setCount(res?.result?.songCount);
     });
-    setIsShow(false);
+    setSearchSuggestIsShow(false);
   };
 
   const onChange = (e) => {
-    setIsShow(true);
     setSearchValue(e.target.value);
+    if (e.target.value.length === 0) {
+      setSearchSuggestIsShow(false);
+    } else {
+      setSearchSuggestIsShow(true);
+    }
 
     //   发送网络请求，获取搜索建议
     getSearchSuggest(searchValue).then((res) => {
@@ -48,62 +68,69 @@ const XXSearch = memo((props) => {
   const playlists = suggest?.playlists;
   const album = suggest?.album;
 
-  const clickItem = useCallback(
-    (id) => {
-      if (id !== currentClass) {
-        setCurrentClass(id);
+  const changeSearchType = useCallback(
+    (e) => {
+      setSearchResult([]);
+      //   切换搜索类型
+      getSearchResult(searchValue || value, 30, 0, e).then((res) => {
+        searchCategoriesResult(e, res);
+      });
+      if (e !== currentClass) {
+        setCurrentClass(e);
       }
     },
-    [currentClass]
+    [searchValue, value, currentClass]
   );
 
-  const changeSearchType = () => {
-    setSearchResult([]);
-    const { type } = getQueryObject();
-    //   切换搜索类型
-    getSearchResult(searchValue, 30, 0, type).then((res) => {
-      switch (Number(type)) {
-        case 1:
-          setSearchResult(res?.result?.songs);
-          setCount(res?.result?.songCount);
-          break;
-        case 10:
-          setSearchResult(res?.result?.albums);
-          setCount(res?.result?.albumCount);
-          break;
-        case 100:
-          setSearchResult(res?.result?.artists);
-          setCount(res?.result?.artistCount);
-          break;
-        case 1000:
-          setSearchResult(res?.result?.playlists);
-          setCount(res?.result?.playlistCount);
-          break;
-        case 1002:
-          setSearchResult(res?.result?.userprofiles);
-          setCount(res?.result?.userprofileCount);
-          break;
-        case 1006:
-          setSearchResult(res?.result?.songs);
-          setCount(res?.result?.songCount);
-          break;
-        case 1009:
-          setSearchResult(res?.result?.djRadios);
-          setCount(res?.result?.djRadioCount);
-          break;
-        default:
-          setSearchResult(res?.result?.videos);
-          setCount(res?.result?.videoCount);
-          break;
-      }
-      console.log(searchResult);
-    });
+  const searchCategoriesResult = (e, value) => {
+    switch (Number(e)) {
+      case 1:
+        setSearchResult(value?.result?.songs);
+        setCount(value?.result?.songCount);
+        break;
+      case 10:
+        setSearchResult(value?.result?.albums);
+        setCount(value?.result?.albumCount);
+        break;
+      case 100:
+        setSearchResult(value?.result?.artists);
+        setCount(value?.result?.artistCount);
+        break;
+      case 1000:
+        setSearchResult(value?.result?.playlists);
+        setCount(value?.result?.playlistCount);
+        break;
+      case 1002:
+        setSearchResult(value?.result?.userprofiles);
+        setCount(value?.result?.userprofileCount);
+        break;
+      case 1006:
+        setSearchResult(value?.result?.songs);
+        setCount(value?.result?.songCount);
+        break;
+      case 1009:
+        setSearchResult(value?.result?.djRadios);
+        setCount(value?.result?.djRadioCount);
+        break;
+      default:
+        setSearchResult(value?.result?.videos);
+        setCount(value?.result?.videoCount);
+        break;
+    }
   };
 
   return (
-    <SearchWrapper className="wrap-v2" isVisible={isShow}>
+    <SearchWrapper className="wrap-v2">
       <div className="search">
         <Input.Search
+          onBlur={() => {
+            setSearchSuggestIsShow(false);
+          }}
+          onFocus={() => {
+            if (searchValue.length !== 0) {
+              setSearchSuggestIsShow(true);
+            }
+          }}
           placeholder="音乐/视频/电台/用户"
           allowClear
           value={searchValue}
@@ -112,31 +139,37 @@ const XXSearch = memo((props) => {
           style={{ width: 400 }}
         />
       </div>
-      <div className="suggest">
-        <div className="title">搜索 "{searchValue}" 相关用户</div>
-        {songs !== undefined ? (
-          <XXSearchModel content={songs} title="单曲" />
-        ) : (
-          ""
-        )}
-        {artists !== undefined ? (
-          <XXSearchModel content={artists} title="歌手" />
-        ) : (
-          ""
-        )}
-        {album !== undefined ? (
-          <XXSearchModel content={album} title="专辑" />
-        ) : (
-          ""
-        )}
-        {playlists !== undefined ? (
-          <XXSearchModel content={playlists} title="歌单" />
-        ) : (
-          ""
-        )}
-      </div>
+
+      {/* 控制搜索建议是否展示 */}
+      {searchSuggestIsShow === true ? (
+        <div className="suggest">
+          <div className="title">搜索 "{searchValue}" 相关用户</div>
+          {songs !== undefined ? (
+            <XXSearchModel content={songs} title="单曲" />
+          ) : (
+            ""
+          )}
+          {artists !== undefined ? (
+            <XXSearchModel content={artists} title="歌手" />
+          ) : (
+            ""
+          )}
+          {album !== undefined ? (
+            <XXSearchModel content={album} title="专辑" />
+          ) : (
+            ""
+          )}
+          {playlists !== undefined ? (
+            <XXSearchModel content={playlists} title="歌单" />
+          ) : (
+            ""
+          )}
+        </div>
+      ) : (
+        ""
+      )}
       <div className="count">
-        搜索“{searchValue}”，找到 {count} 个视频
+        搜索“{searchValue}”，找到 {count || 0} 个视频
       </div>
       <div className="tab tab_icon">
         {searchCategory &&
@@ -148,12 +181,13 @@ const XXSearch = memo((props) => {
                   (item.type === currentClass ? "active" : "")
                 }
                 onClick={(e) => {
-                  clickItem(item.type);
-                  changeSearchType();
+                  changeSearchType(item.type);
                 }}
                 key={index}
               >
-                <NavLink to={`search?type=${item.type}`}>{item.title}</NavLink>
+                <NavLink to={`?type=${item.type}&value=${searchValue}`}>
+                  {item.title}
+                </NavLink>
               </div>
             );
           })}
@@ -168,6 +202,14 @@ const XXSearch = memo((props) => {
                 return <ThemeArtistCard key={index} info={item} />;
               case 1014:
                 return <XXVideoCard key={index} info={item} />;
+              case 1002:
+                return <Users key={index} info={item} />;
+              case 1:
+                return <Single key={index} info={item} />;
+              case 1006:
+                return <Lyric key={index} info={item} />;
+              case 1009:
+                return <Anchor key={index} info={item} />;
 
               default:
                 return <div>{getQueryObject().type}</div>;

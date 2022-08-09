@@ -150,7 +150,7 @@ export const searchCategory = [
     type: 1006,
   },
   {
-    title: "电台",
+    title: "声音主播",
     id: 6,
     type: 1009,
   },
@@ -3966,5 +3966,28 @@ export const anchor = [
     Image:
       "http://p1.music.126.net/icULXvfqWJMFvcjTrXSLeA==/109951165406422565.jpg",
     id: 100000,
+  },
+];
+
+export const messageTable = [
+  {
+    title: "我的",
+    class_name: "at",
+    link: "at",
+  },
+  {
+    title: "私信",
+    class_name: "private",
+    link: "private",
+  },
+  {
+    title: "评论",
+    class_name: "comment",
+    link: "comment",
+  },
+  {
+    title: "通知",
+    class_name: "notify",
+    link: "notify",
   },
 ];

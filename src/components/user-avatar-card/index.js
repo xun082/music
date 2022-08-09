@@ -18,7 +18,7 @@ const XXUserAvatar = memo((props) => {
         <Link className="link" to={`/users/home?id=${userId}`}>
           {nickname}
         </Link>
-        <div>{parseTime(time)}</div>
+        <div className="time">{parseTime(time, "{m}月{d}日 {h}:{i}")}</div>
       </div>
     </AvatarWrapper>
   );

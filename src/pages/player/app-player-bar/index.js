@@ -247,7 +247,11 @@ export default memo(function JMAppPlayerBar() {
           </div>
         </PlayInfo>
         <Operator playSequence={playSequence}>
-          <div className="left"></div>
+          <div className="player_control">
+            <div className="pip"></div>
+            <div className="add sprite_player"></div>
+            <div className="share sprite_player"></div>
+          </div>
           <div className="right sprite_player">
             <button
               className="sprite_player btn volume"

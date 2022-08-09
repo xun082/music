@@ -17,7 +17,7 @@ export const PlayBarWrapper = styled.div`
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
-    height: 47px;
+    height: 50px;
     align-content: center;
   }
 
@@ -194,13 +194,31 @@ export const Operator = styled.div`
     background-position: -114px -163px;
   }
 
-  .left {
+  .player_control {
     margin-top: 10px;
     width: 90px;
     height: 25px;
     display: flex;
-    background-color: pink;
     align-items: center;
+    justify-content: space-between;
+    div {
+      cursor: pointer;
+    }
+    .pip {
+      width: 23px;
+      height: 23px;
+      background-position: -1px -26px;
+    }
+    .add {
+      background-position: -89px -189px;
+      width: 24px;
+      height: 24px;
+    }
+    .share {
+      background-position: -115px -190px;
+      width: 23px;
+      height: 23px;
+    }
   }
 
   .anticon-download {
