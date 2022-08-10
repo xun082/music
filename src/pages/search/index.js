@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 import { SearchWrapper } from "./style";
 import { Input } from "antd";
@@ -16,8 +16,9 @@ import Users from "./components/users";
 import Single from "./components/single";
 import Lyric from "./components/lyric";
 import Anchor from "./components/anchor";
+import { _debounce } from "@/utils/util";
 
-const XXSearch = memo((props) => {
+const XXSearch = () => {
   useGetUserinfo();
   const { type, value } = getQueryObject();
 
@@ -56,11 +57,18 @@ const XXSearch = memo((props) => {
       setSearchSuggestIsShow(true);
     }
 
-    //   发送网络请求，获取搜索建议
-    getSearchSuggest(searchValue).then((res) => {
-      const result = res?.result;
-      setSuggest(result);
-    });
+    /**
+     * 发送网络请求，获取搜索建议
+     * 防抖
+     */
+    _debounce(
+      getSearchSuggest(searchValue).then((res) => {
+        const result = res?.result;
+        setSuggest(result);
+      }),
+      500,
+      1
+    );
   };
 
   const songs = suggest?.songs;
@@ -218,6 +226,6 @@ const XXSearch = memo((props) => {
       </div>
     </SearchWrapper>
   );
-});
+};
 
 export default XXSearch;
