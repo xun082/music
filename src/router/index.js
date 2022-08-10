@@ -37,7 +37,6 @@ import MessageAt from "@/pages/message/c-cpns/at";
 import MessageComment from "@/pages/message/c-cpns/comment";
 import MessagePrivate from "@/pages/message/c-cpns/private";
 import MessageNotify from "@/pages/message/c-cpns/notify";
-import MessageDetail from "@/pages/message/c-cpns/private-detail";
 
 const routes = [
   {
@@ -165,11 +164,7 @@ const routes = [
         component: MessagePrivate,
         exact: true,
       },
-      {
-        path: "/message/private/detail",
-        exact: true,
-        component: MessageDetail,
-      },
+
       {
         path: "/message/notify",
         exact: true,

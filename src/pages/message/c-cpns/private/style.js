@@ -79,6 +79,93 @@ export const PrivateWrapper = styled.div`
           font-weight: 700;
         }
       }
+      .chat_frame {
+        height: 490px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 10px;
+          height: 100%;
+          background: transparent;
+        }
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: transparent;
+        }
+        .content {
+          .time {
+            width: 100%;
+            text-align: center;
+            margin: 20px 0;
+          }
+          .user {
+            height: auto;
+            display: flex;
+            img {
+              width: 50px;
+              height: 50px;
+            }
+            .info {
+              margin-left: 20px;
+              padding: 16px 20px;
+              box-sizing: border-box;
+              max-width: 440px;
+              background-color: #f4f4f4;
+              border-radius: 10px;
+            }
+          }
+          .my {
+            justify-content: end;
+            .info {
+              margin: 0 20px 0 0;
+              background-color: #79ace5;
+            }
+          }
+        }
+      }
+      .control {
+        padding: 20px 40px;
+        width: 100%;
+        height: 100%;
+        .input {
+          width: 100%;
+          height: 65px;
+          resize: none;
+          background: #fcfcfc;
+        }
+        .tag {
+          margin-top: 10px;
+          display: flex;
+          justify-content: space-between;
+          .emo {
+            width: 18px;
+            height: 18px;
+            margin-top: 7px;
+            background-position: -40px -490px;
+            cursor: pointer;
+          }
+          .submit {
+            display: flex;
+            height: 25px;
+            .count {
+              height: 100%;
+              line-height: 25px;
+              color: #999;
+              margin-right: 10px;
+            }
+            .btn {
+              width: 46px;
+              height: 100%;
+              background-position: -84px -64px;
+              color: #fff;
+              text-align: center;
+              line-height: 25px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
   }
   & :hover {

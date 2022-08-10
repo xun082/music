@@ -1,4 +1,3 @@
-
 /**
  * 防抖函数(可用于防止重复提交)
  * 当持续触发事件时，一定时间段内没有再触发事件，事件处理函数才会执行一次，
@@ -18,18 +17,17 @@ export const _debounce = (fn, wait, immediate) => {
       var callNow = !timer;
       timer = setTimeout(() => {
         timer = null;
-      }, wait)
+      }, wait);
       if (callNow) {
-        fn.apply(this, arguments)
+        fn.apply(this, arguments);
       }
     } else {
       timer = setTimeout(() => {
-        fn.apply(this, arguments)
+        fn.apply(this, arguments);
       }, wait);
     }
-  }
-}
-
+  };
+};
 
 /**
  * 节流函数
@@ -57,7 +55,7 @@ export const _throttle = (fn, wait, options = {}) => {
         timer = null;
       }
       previous = now;
-      fn.apply(this, arguments)
+      fn.apply(this, arguments);
     } else if (!timer && options.trailing !== false) {
       timer = setTimeout(() => {
         previous = options.leading === false ? 0 : new Date().getTime();
@@ -65,9 +63,9 @@ export const _throttle = (fn, wait, options = {}) => {
         fn.apply(this, arguments);
       }, remaining);
     }
-  }
+  };
   return throttled;
-}
+};
 
 /**
  * 根据数组对象的某个字段去重
@@ -75,9 +73,8 @@ export const _throttle = (fn, wait, options = {}) => {
  * */
 export const unique = (arr, val) => {
   const res = new Map();
-  return arr.filter(item => !res.has(item[val]) && res.set(item[val], 1))
-}
-
+  return arr.filter((item) => !res.has(item[val]) && res.set(item[val], 1));
+};
 
 /**
  * 过滤对象中为空的属性
@@ -85,14 +82,19 @@ export const unique = (arr, val) => {
  * @returns {*}
  */
 export function filterObjTrim(obj) {
-  if (!(typeof obj == 'object')) {
+  if (!(typeof obj == "object")) {
     return;
   }
 
   for (var key in obj) {
     // eslint-disable-next-line
-    if (obj.hasOwnProperty(key) &&
-      (obj[key] == null || obj[key] == undefined || obj[key] == 'undefined' || obj[key] === '')) {
+    if (
+      obj.hasOwnProperty(key) &&
+      (obj[key] == null ||
+        obj[key] === undefined ||
+        obj[key] === "undefined" ||
+        obj[key] === "")
+    ) {
       delete obj[key];
     }
   }
